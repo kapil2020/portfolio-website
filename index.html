@@ -3,195 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sayani Banerjee - MBA Portfolio</title>
+    <title>Sayani Banerjee - Portfolio</title>
     <style>
         /* General Styling */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
         body {
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #f0f0f0, #e6e6e6);
-            color: #333;
+            background: #f8f9fa;
+            color: #343a40;
             line-height: 1.6;
             overflow-x: hidden;
         }
 
         /* Header */
         header {
-            background: linear-gradient(45deg, #00416A, #E4E5E6);
+            background: linear-gradient(135deg, #4CA1AF, #2C3E50);
             color: white;
             text-align: center;
-            padding: 4rem 0;
-            position: relative;
-            animation: gradientBG 15s ease infinite;
-            background-size: 400% 400%;
-        }
-
-        @keyframes gradientBG {
-            0% {background-position: 0% 50%;}
-            50% {background-position: 100% 50%;}
-            100% {background-position: 0% 50%;}
+            padding: 4rem 1rem;
         }
 
         header h1 {
             font-size: 3.5rem;
+            font-weight: 700;
             margin: 0;
-            font-weight: 900;
-            animation: fadeInDown 1s ease-out;
+            animation: slideInFromLeft 1s ease-out;
         }
 
         header p {
-            font-size: 1.5rem;
-            animation: fadeInUp 1s ease-out;
+            font-size: 1.2rem;
+            margin-top: 1rem;
+            animation: fadeIn 1.5s ease-in-out;
         }
 
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Main Layout */
-        main {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem 1rem;
-        }
-
-        section {
-            margin-bottom: 4rem;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: slideUp 1s ease-in-out forwards;
-        }
-
-        @keyframes slideUp {
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        section h2 {
-            color: #00416A;
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            position: relative;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            animation: scaleUp 0.5s ease-out forwards;
-        }
-
-        @keyframes scaleUp {
-            from { transform: scale(0.9); }
-            to { transform: scale(1); }
-        }
-
-        section h2::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 4px;
-            background: #E4E5E6;
-            margin-top: 0.5rem;
-            transform-origin: left;
-            animation: lineScale 0.5s ease-out forwards 0.5s;
-        }
-
-        @keyframes lineScale {
-            from { transform: scaleX(0); }
-            to { transform: scaleX(1); }
-        }
-
-        /* Timeline */
-        .timeline {
-            position: relative;
-            padding: 2em 0;
-            list-style-type: none;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 50%;
-            width: 2px;
-            height: 100%;
-            background: #00416A;
-        }
-
-        .timeline-item {
-            width: 45%;
-            position: relative;
-            margin-bottom: 30px;
-        }
-
-        .timeline-item:nth-child(odd) {
-            float: left;
-            clear: left;
-            text-align: right;
-        }
-
-        .timeline-item:nth-child(even) {
-            float: right;
-            clear: right;
-            text-align: left;
-        }
-
-        .timeline-item::after {
-            content: '';
-            position: absolute;
-            width: 15px;
-            height: 15px;
-            top: 0;
-            background: #E4E5E6;
-            border-radius: 50%;
-            border: 3px solid #00416A;
-            z-index: 1;
-        }
-
-        .timeline-item:nth-child(odd)::after {
-            right: -9px;
-        }
-
-        .timeline-item:nth-child(even)::after {
-            left: -9px;
-        }
-
-        .timeline-content {
-            padding: 1.5em;
-            background: #fff;
-            border-radius: 10px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .timeline-content:hover {
-            transform: scale(1.05);
-        }
-
-        .timeline-content h3 {
-            color: #00416A;
-        }
-
-        /* Skills */
-        .skills-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-        }
-
-        .skill-card {
-            background: linear-gradient(45deg, #00416A, #797D7F);
-            color: white;
-            border-radius: 15px;
-            padding: 1rem;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            animation: fadeIn 0.5s ease-out forwards;
+        @keyframes slideInFromLeft {
+            from { transform: translateX(-100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
         }
 
         @keyframes fadeIn {
@@ -199,133 +49,174 @@
             to { opacity: 1; }
         }
 
-        .skill-card:hover {
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+        /* Main Layout */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
         }
 
-        /* Contact */
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
+        section {
+            margin-bottom: 4rem;
+            animation: fadeIn 1.5s ease-in-out;
         }
 
-        .contact-item {
-            padding: 1rem;
+        section h2 {
+            color: #4CA1AF;
+            font-size: 2.5rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        section h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: #4CA1AF;
+            margin-top: 0.5rem;
+        }
+
+        /* Cards */
+        .card {
+            background: white;
             border-radius: 10px;
-            background: #fff;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
 
-        .contact-item:hover {
+        .card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
         }
 
-        .contact-item a {
-            color: #00416A;
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-card {
+            background: linear-gradient(135deg, #4CA1AF, #2C3E50);
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .skill-card h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Contact Info */
+        .card a {
+            color: #4CA1AF;
             text-decoration: none;
+        }
+
+        .card a:hover {
+            text-decoration: underline;
         }
 
         /* Footer */
         footer {
-            text-align: center;
-            background: #00416A;
+            background: #2C3E50;
             color: white;
-            padding: 1rem 0;
-            animation: fadeIn 1s ease-out forwards;
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.9rem;
         }
 
         /* Responsive Design */
         @media (max-width: 768px) {
             header h1 { font-size: 2.5rem; }
-            header p { font-size: 1.2rem; }
-            section h2 { font-size: 1.8rem; }
-            .timeline-item { width: 100%; text-align: left; }
-            .timeline-item:nth-child(odd), .timeline-item:nth-child(even) { float: none; clear: none; }
-            .timeline-item::after { left: 0; }
-            .skills-container { grid-template-columns: 1fr; }
+            header p { font-size: 1rem; }
+            section h2 { font-size: 2rem; }
         }
     </style>
 </head>
 <body>
     <header>
         <h1>Sayani Banerjee</h1>
-        <p>MBA Candidate | Marketing & Strategy</p>
+        <p>Content Writer | Aspiring Marketing Strategist | First-Year MBA Student</p>
     </header>
     <main>
         <section id="about">
-            <h2>Profile</h2>
-            <p>Detail-oriented professional with 2+ years in content & marketing, pursuing an MBA to enhance strategic leadership and business acumen.</p>
-        </section>
-        <section id="education">
-            <h2>Education</h2>
-            <ul class="timeline">
-                <li class="timeline-item">
-                    <div class="timeline-content">
-                        <h3>MBA in Marketing</h3>
-                        <p>EIILM, Kolkata - In Progress<br>Focus: Digital Marketing, Consumer Insights, Strategic Brand Management</p>
-                    </div>
-                </li>
-                <li class="timeline-item">
-                    <div class="timeline-content">
-                        <h3>BA English Honours</h3>
-                        <p>Basanti Devi College - Graduated 2021<br>Focus: Analytical Writing, Communication</p>
-                    </div>
-                </li>
-            </ul>
-        </section>
-        <section id="experience">
-            <h2>Professional Experience</h2>
-            <ul class="timeline">
-                <li class="timeline-item">
-                    <div class="timeline-content">
-                        <h3>Content Writer and Researcher</h3>
-                        <p>Zenius (Formerly Outreach Chimp) - Jan 2023 - Jul 2024<br>Authored content for international clients, significantly improving engagement (35% increase in click-through rates).</p>
-                    </div>
-                </li>
-                <li class="timeline-item">
-                    <div class="timeline-content">
-                        <h3>Associate Proofreader</h3>
-                        <p>TNQ Technologies - Nov 2021 - Nov 2022<br>Maintained 99% accuracy in high-stakes academic document proofreading.</p>
-                    </div>
-                </li>
-                <li class="timeline-item">
-                    <div class="timeline-content">
-                        <h3>Journalist Intern</h3>
-                        <p>Asiana Times - Apr 2021 - Sep 2021<br>Authored 20+ articles, driving a 10% monthly increase in readership.</p>
-                    </div>
-                </li>
-            </ul>
+            <h2>About Me</h2>
+            <div class="card">
+                <p>I am a detail-oriented professional with over 2 years of experience in content writing, management, and proofreading. Currently pursuing an MBA in Marketing at EIILM, Kolkata, I aim to blend creativity with strategic thinking to achieve impactful results.</p>
+            </div>
         </section>
         <section id="skills">
-            <h2>Key Skills</h2>
+            <h2>Skills</h2>
             <div class="skills-container">
                 <div class="skill-card">
-                    <h3>Leadership</h3>
-                    <p>Strategic team management and project leadership.</p>
+                    <h3>Content Creation</h3>
+                    <p>Expert in crafting engaging and impactful content tailored for various audiences.</p>
                 </div>
                 <div class="skill-card">
                     <h3>Digital Marketing</h3>
-                    <p>SEO, analytics, and social media strategy.</p>
+                    <p>Skilled in SEO, campaign management, and social media strategies to enhance brand reach.</p>
                 </div>
                 <div class="skill-card">
-                    <h3>Content Strategy</h3>
-                    <p>Creating engaging content for diverse audiences.</p>
+                    <h3>Research & Analysis</h3>
+                    <p>Proficient in market research to deliver actionable insights for strategic decisions.</p>
                 </div>
                 <div class="skill-card">
-                    <h3>Data Analysis</h3>
-                    <p>Utilizing data for informed marketing decisions.</p>
+                    <h3>Team Leadership</h3>
+                    <p>Experienced in managing cross-functional teams to achieve project goals.</p>
                 </div>
+            </div>
+        </section>
+        <section id="experience">
+            <h2>Professional Experience</h2>
+            <div class="card">
+                <h3>Zenius (Formerly Outreach Chimp) | Jan 2023 - Jul 2024</h3>
+                <p>Managed international branding campaigns, creating engaging promotional content tailored for US and UK audiences, while aligning with market trends.</p>
+            </div>
+            <div class="card">
+                <h3>TNQ Technologies | Nov 2021 - Nov 2022</h3>
+                <p>Proofread academic theses, ensuring clarity and accuracy, while collaborating with clients to maintain high standards.</p>
+            </div>
+            <div class="card">
+                <h3>Asiana Times | Apr 2021 - Sep 2021</h3>
+                <p>Wrote articles on diverse topics, conducted in-depth research, and collaborated with editors to produce quality content.</p>
+            </div>
+        </section>
+        <section id="education">
+            <h2>Education</h2>
+            <div class="card">
+                <h3>MBA in Marketing | EIILM, Kolkata</h3>
+                <p>Currently pursuing. Focus on Digital Marketing, Consumer Insights, and Strategic Brand Management.</p>
+            </div>
+            <div class="card">
+                <h3>BA in English Honours | Basanti Devi College</h3>
+                <p>Graduated in 2021. Specialized in analytical and written communication skills.</p>
             </div>
         </section>
         <section id="contact">
             <h2>Contact</h2>
-            <div class="contact-info">
-                <div class="contact-item">
-                    <a href="mailto:sayaniedu16@gmail.com">Email</a>
-                </div>
-                <div class="contact-item">
-                    
+            <div class="card">
+                <p>Email: <a href="mailto:sayaniedu16@gmail.com">sayaniedu16@gmail.com</a></p>
+                <p>Phone: +91 80179 00442</p>
+                <p>LinkedIn: <a href="https://www.linkedin.com/in/sayani-b-2a43aa214/">Visit LinkedIn</a></p>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>© 2024 Sayani Banerjee. All rights reserved.</p>
+    </footer>
+</body>
+</html>
