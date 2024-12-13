@@ -7,23 +7,21 @@
     <style>
         /* General Styling */
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-            background: #f8f9fa;
-            color: #343a40;
-            line-height: 1.6;
-            overflow-x: hidden;
+            background: #f0f2f5;
+            color: #212529;
+            line-height: 1.7;
         }
 
         /* Header */
         header {
-            background: #343a40;
+            background: #17a2b8;
             color: white;
             text-align: center;
             padding: 3rem 0;
             position: relative;
-            background-image: linear-gradient(to right, #343a40, #212529);
         }
 
         header h1 {
@@ -34,7 +32,7 @@
         }
 
         header p {
-            font-size: 1.1rem;
+            font-size: 1.5rem;
             animation: fadeInUp 1s ease-in-out;
         }
 
@@ -48,162 +46,131 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Main Layout */
+        /* Main Content */
         main {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 2rem;
         }
 
         section {
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
         }
 
         section h2 {
-            color: #007bff;
-            font-size: 2.5rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            position: relative;
+            color: #17a2b8;
+            font-size: 2.2rem;
+            font-weight: 700;
             text-transform: uppercase;
+            position: relative;
+            margin-bottom: 1rem;
         }
 
         section h2::after {
             content: '';
             display: block;
-            width: 80px;
-            height: 4px;
-            background: #007bff;
+            width: 60px;
+            height: 3px;
+            background: #17a2b8;
+            margin-top: 10px;
+        }
+
+        /* Experience Cards */
+        .experience-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .experience-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .experience-card h3 {
+            margin-top: 0;
+            color: #17a2b8;
+            font-size: 1.3rem;
+        }
+
+        .experience-card p {
+            margin: 0.5rem 0;
+        }
+
+        /* Infographic Elements */
+        .infographic {
+            width: 100%;
+            height: auto;
             margin-top: 1rem;
         }
 
-        /* Cards */
-        .card {
-            background: #ffffff;
-            border-radius: 15px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            padding: 2rem;
-            margin-bottom: 2rem;
-            transition: all 0.3s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-        }
-
-        /* Skills Section */
-        .skills-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
-        }
-
-        .skill-card {
-            background: #007bff;
-            color: white;
-            border-radius: 10px;
-            padding: 1.5rem;
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        }
-
-        .skill-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
-        }
-
-        .skill-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-        }
-
-        /* Experience & Education */
-        .card h3 {
-            font-size: 1.2rem;
-            color: #007bff;
-            margin-bottom: 0.5rem;
-        }
-
-        /* Contact Info */
-        .card a {
-            color: #007bff;
-            text-decoration: none;
-        }
-
-        .card a:hover {
-            text-decoration: underline;
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 { font-size: 2rem; }
+            header p { font-size: 1rem; }
+            section h2 { font-size: 1.8rem; }
         }
 
         /* Footer */
         footer {
             text-align: center;
-            padding: 1rem;
-            background: #343a40;
+            background: #17a2b8;
             color: white;
+            padding: 1rem 0;
             font-size: 0.9rem;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            header h1 { font-size: 2.5rem; }
-            header p { font-size: 1rem; }
-            section h2 { font-size: 2rem; }
-            .skills-container { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
     <header>
         <h1>Sayani Banerjee</h1>
-        <p>Content Writer | Aspiring Marketing Strategist | First-Year MBA Student</p>
+        <p>Content Writer & Researcher</p>
     </header>
     <main>
-        <section id="about">
-            <h2>About Me</h2>
-            <div class="card">
-                <p>I am a detail-oriented professional with over 2 years of experience in content writing, management, and proofreading. Currently pursuing an MBA in Marketing at EIILM, Kolkata, I aim to blend creativity with strategic thinking to achieve impactful results.</p>
-            </div>
-        </section>
-        <section id="skills">
-            <h2>Skills</h2>
-            <div class="skills-container">
-                <div class="skill-card">
-                    <h3>Content Creation</h3>
-                    <p>Expert in crafting engaging and impactful content tailored for various audiences.</p>
-                </div>
-                <div class="skill-card">
-                    <h3>Digital Marketing</h3>
-                    <p>Skilled in SEO, campaign management, and social media strategies to enhance brand reach.</p>
-                </div>
-                <!-- Add more skill cards here -->
-            </div>
-        </section>
         <section id="experience">
             <h2>Professional Experience</h2>
-            <div class="card">
-                <h3>Zenius (Formerly Outreach Chimp) | Jan 2023 - Jul 2024</h3>
-                <p>Managed international branding campaigns, creating engaging promotional content tailored for US and UK audiences, while aligning with market trends.</p>
+            
+            <div class="experience-card">
+                <h3>Content Writer and Researcher<br>Zenius (Formerly Outreach Chimp) | Jan 2023 - Jul 2024</h3>
+                <p>
+                    - Authored engaging brand deals and promotional content for international clients, particularly from the US and UK, ensuring compliance with brand guidelines.<br>
+                    - Conducted client meetings to tailor content to specific branding needs.<br>
+                    - Researched and analyzed market trends to craft strategic promotional content.<br>
+                </p>
+                <!-- You can insert an infographic here to visually represent your achievements, e.g., a chart of client satisfaction or impact metrics -->
+                <img class="infographic" src="path/to/your/infographic1.jpg" alt="Infographic of client engagement improvement">
             </div>
-            <!-- Add more experience cards here -->
-        </section>
-        <section id="education">
-            <h2>Education</h2>
-            <div class="card">
-                <h3>MBA in Marketing | EIILM, Kolkata</h3>
-                <p>Currently pursuing. Focus on Digital Marketing, Consumer Insights, and Strategic Brand Management.</p>
+
+            <div class="experience-card">
+                <h3>Associate Proofreader<br>TNQ Technologies | Nov 2021 - Nov 2022</h3>
+                <p>
+                    - Proofread academic theses in biomedical and engineering fields for international universities, focusing on accuracy and style.<br>
+                    - Collaborated with teams to maintain high standards, correcting grammar, punctuation, and formatting.<br>
+                    - Managed client communications to update on project statuses and address concerns.<br>
+                </p>
+                <!-- Infographic for proofreading efficiency or client feedback -->
+                <img class="infographic" src="path/to/your/infographic2.jpg" alt="Infographic showing proofreading efficiency">
             </div>
-            <!-- Add more education cards here -->
-        </section>
-        <section id="contact">
-            <h2>Contact</h2>
-            <div class="card">
-                <p>Email: <a href="mailto:sayaniedu16@gmail.com">sayaniedu16@gmail.com</a></p>
-                <p>Phone: +91 80179 00442</p>
-                <p>LinkedIn: <a href="https://www.linkedin.com/in/sayani-b-2a43aa214/">Visit LinkedIn</a></p>
+
+            <div class="experience-card">
+                <h3>Journalist Intern<br>Asiana Times | Apr 2021 - Sep 2021</h3>
+                <p>
+                    - Produced articles across diverse topics, ensuring reader engagement through thorough research.<br>
+                    - Worked closely with editorial teams to refine content quality and meet publication deadlines.<br>
+                    - Kept abreast of current events to deliver timely and relevant content.<br>
+                </p>
+                <!-- Infographic could show article reach or reader engagement stats -->
+                <img class="infographic" src="path/to/your/infographic3.jpg" alt="Infographic on article readership">
             </div>
         </section>
     </main>
     <footer>
         <p>© 2024 Sayani Banerjee. All rights reserved.</p>
+    </footer>
+</body>
+</html>
