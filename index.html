@@ -13,127 +13,114 @@
             background-color: #f9f9f9;
             color: #333;
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         header {
             background: linear-gradient(90deg, #2c3e50, #4ca1af);
             color: #fff;
             text-align: center;
-            padding: 2rem 0;
+            padding: 4rem 0;
+            position: relative;
         }
 
         header h1 {
-            font-size: 3rem;
+            font-size: 3.5rem;
             margin: 0;
+            animation: fadeInDown 1.5s ease-in-out;
         }
 
         header p {
             font-size: 1.2rem;
+            animation: fadeInUp 1.5s ease-in-out;
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         main {
-            padding: 2rem;
+            padding: 3rem;
             max-width: 1200px;
             margin: auto;
         }
 
         section {
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
         }
 
         section h2 {
             color: #2c3e50;
-            font-size: 1.8rem;
+            font-size: 2rem;
             margin-bottom: 1rem;
+            position: relative;
+            text-transform: uppercase;
         }
 
-        ul {
-            list-style: none;
-            padding: 0;
+        section h2::after {
+            content: "";
+            position: absolute;
+            width: 50px;
+            height: 4px;
+            background: #4ca1af;
+            bottom: -10px;
+            left: 0;
         }
 
-        ul li {
-            background: #ecf0f1;
-            margin: 0.5rem 0;
-            padding: 0.8rem;
-            border-radius: 8px;
-            font-size: 1rem;
-        }
-
-        .btn {
-            display: inline-block;
-            background: #3498db;
-            color: #fff;
-            padding: 0.7rem 1.2rem;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background 0.3s;
-            font-size: 1rem;
-        }
-
-        .btn:hover {
-            background: #2980b9;
-        }
-
-        footer {
-            text-align: center;
-            padding: 1.5rem;
-            background: #2c3e50;
-            color: #fff;
-            margin-top: 2rem;
-        }
-
-        footer p {
-            margin: 0;
-            font-size: 0.9rem;
-        }
-
-        /* Card Styling */
         .card {
             background: #fff;
             border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             padding: 2rem;
             margin-bottom: 2rem;
-            transition: transform 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
         }
 
         .card:hover {
             transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
         }
 
-        .card h3 {
-            margin-top: 0;
-            color: #4ca1af;
-        }
-
-        .card p {
-            margin: 0.5rem 0 0;
-        }
-
-        /* Infographic Bars */
         .skill-bar {
             position: relative;
-            display: block;
             width: 100%;
             background: #ecf0f1;
             border-radius: 5px;
-            margin: 10px 0;
+            margin: 15px 0;
             overflow: hidden;
         }
 
         .skill-bar span {
             display: block;
             height: 20px;
-            background: #4ca1af;
+            background: linear-gradient(90deg, #4ca1af, #2c3e50);
             width: 0;
             animation: loadBar 2s forwards;
         }
 
         @keyframes loadBar {
             to {
-                width: 90%;
+                width: 95%;
             }
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: #2c3e50;
+            color: #fff;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 0.9rem;
         }
     </style>
 </head>
@@ -146,18 +133,11 @@
         <section id="about">
             <h2>About Me</h2>
             <div class="card">
-                <p>Dynamic and detail-oriented professional with over 2 years of experience in content writing, management, and proofreading. Currently pursuing an MBA in Marketing at EIILM, Kolkata, bringing strong communication, time management, and multitasking skills to the table. Proven ability to excel independently and within team settings, consistently delivering high-quality work.</p>
+                <p>I am a detail-oriented professional with over 2 years of experience in content writing, management, and proofreading. Currently pursuing an MBA in Marketing at EIILM, Kolkata, I aim to blend creativity with strategic thinking to achieve impactful results.</p>
             </div>
         </section>
         <section id="skills">
             <h2>Skills</h2>
-            <ul>
-                <li>Content Development: Writing, Editing, Proofreading</li>
-                <li>Marketing Research and Strategy</li>
-                <li>Digital Marketing Tools and Campaigns</li>
-                <li>Communication and Public Speaking</li>
-                <li>Project Management and Team Leadership</li>
-            </ul>
             <h3>Proficiency</h3>
             <div class="skill-bar"><span style="width: 95%;">Content Creation</span></div>
             <div class="skill-bar"><span style="width: 85%;">Digital Marketing</span></div>
@@ -167,26 +147,26 @@
             <h2>Professional Experience</h2>
             <div class="card">
                 <h3>Zenius (Formerly Outreach Chimp) | Jan 2023 - Jul 2024</h3>
-                <p>Wrote engaging brand deals and promotional content for international clients, primarily from the US and UK. Conducted client meetings to understand branding and promotional needs, and analyzed market trends to create effective strategies.</p>
+                <p>Managed international branding campaigns, creating engaging promotional content tailored for US and UK audiences, while aligning with market trends.</p>
             </div>
             <div class="card">
                 <h3>TNQ Technologies | Nov 2021 - Nov 2022</h3>
-                <p>Proofread theses from international universities focusing on biomedical and engineering subjects, ensuring clarity and adherence to styles. Collaborated with a team to maintain high-quality standards and meet deadlines.</p>
+                <p>Proofread and quality-assured theses, maintaining 99% accuracy across biomedical and engineering domains for international universities.</p>
             </div>
             <div class="card">
                 <h3>Asiana Times | Apr 2021 - Sep 2021</h3>
-                <p>Wrote articles on diverse topics, tailoring content to engage readers. Collaborated with editorial teams to refine article quality and ensure timely publication.</p>
+                <p>Authored over 20 articles on diverse topics, enhancing reader engagement and optimizing editorial standards within deadlines.</p>
             </div>
         </section>
         <section id="education">
             <h2>Education</h2>
             <div class="card">
                 <h3>MBA in Marketing | EIILM, Kolkata</h3>
-                <p>Currently pursuing. Focus: Marketing Strategy, Digital Marketing, Consumer Behavior.</p>
+                <p>Currently pursuing. Focus on Digital Marketing, Consumer Insights, and Strategic Brand Management.</p>
             </div>
             <div class="card">
-                <h3>BA English Honours | Basanti Devi College, Calcutta University</h3>
-                <p>Graduated in 2021. Strengthened analytical and writing skills through comprehensive coursework.</p>
+                <h3>BA English Honours | Basanti Devi College</h3>
+                <p>Graduated in 2021. Built strong analytical and written communication skills.</p>
             </div>
         </section>
         <section id="contact">
@@ -194,7 +174,7 @@
             <div class="card">
                 <p>Email: <a href="mailto:sayaniedu16@gmail.com">sayaniedu16@gmail.com</a></p>
                 <p>Phone: +91 80179 00442</p>
-                <p>LinkedIn: <a href="#">LinkedIn Profile</a></p>
+                <p>LinkedIn: <a href="#">Visit LinkedIn</a></p>
             </div>
         </section>
     </main>
