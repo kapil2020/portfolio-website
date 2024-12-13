@@ -3,93 +3,122 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sayani Banerjee - Portfolio</title>
+    <title>Sayani Banerjee - Modern Portfolio</title>
     <style>
         /* General Styling */
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-            background: #f8f9fa;
-            color: #343a40;
-            line-height: 1.6;
+            background: #f5f5f5;
+            color: #4a4a4a;
+            line-height: 1.7;
             overflow-x: hidden;
         }
 
         /* Header */
         header {
-            background: #343a40;
+            background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
             color: white;
             text-align: center;
-            padding: 3rem 0;
+            padding: 4rem 0;
             position: relative;
-            background-image: linear-gradient(to right, #343a40, #212529);
+            animation: gradientShift 15s ease infinite;
+            background-size: 400% 400%;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         header h1 {
-            font-size: 3rem;
-            font-weight: 700;
+            font-size: 4rem;
+            font-weight: 900;
             margin: 0;
-            animation: fadeInDown 1s ease-in-out;
+            animation: fadeIn 1s ease-in-out;
         }
 
         header p {
-            font-size: 1.1rem;
-            animation: fadeInUp 1s ease-in-out;
+            font-size: 1.5rem;
+            font-weight: 300;
+            animation: fadeIn 1.5s ease-in-out;
         }
 
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         /* Main Layout */
         main {
-            max-width: 1400px;
-            margin: 0 auto;
+            max-width: 1200px;
+            margin: auto;
             padding: 2rem;
         }
 
         section {
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
         }
 
         section h2 {
-            color: #007bff;
-            font-size: 2.5rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
+            color: #405de6;
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
             position: relative;
             text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
         section h2::after {
             content: '';
             display: block;
-            width: 80px;
-            height: 4px;
-            background: #007bff;
-            margin-top: 1rem;
+            width: 60px;
+            height: 2px;
+            background: #c13584;
+            margin-top: 0.5rem;
         }
 
         /* Cards */
         .card {
-            background: #ffffff;
-            border-radius: 15px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
             padding: 2rem;
             margin-bottom: 2rem;
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(64, 93, 230, 0.2));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
         }
 
         .card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card h3 {
+            font-size: 1.4rem;
+            color: #405de6;
+            margin-bottom: 0.5rem;
         }
 
         /* Skills Section */
@@ -100,18 +129,18 @@
         }
 
         .skill-card {
-            background: #007bff;
+            background: linear-gradient(45deg, #405de6, #5851db);
             color: white;
-            border-radius: 10px;
+            border-radius: 15px;
             padding: 1.5rem;
             text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
         .skill-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
 
         .skill-card h3 {
@@ -119,37 +148,31 @@
             margin-bottom: 0.5rem;
         }
 
-        /* Experience & Education */
-        .card h3 {
-            font-size: 1.2rem;
-            color: #007bff;
-            margin-bottom: 0.5rem;
-        }
-
         /* Contact Info */
         .card a {
-            color: #007bff;
+            color: #c13584;
             text-decoration: none;
+            transition: color 0.3s ease;
         }
 
         .card a:hover {
-            text-decoration: underline;
+            color: #e1306c;
         }
 
         /* Footer */
         footer {
             text-align: center;
-            padding: 1rem;
-            background: #343a40;
+            background: #222;
             color: white;
+            padding: 2rem 0;
             font-size: 0.9rem;
         }
 
         /* Responsive Design */
         @media (max-width: 768px) {
-            header h1 { font-size: 2.5rem; }
-            header p { font-size: 1rem; }
-            section h2 { font-size: 2rem; }
+            header h1 { font-size: 3rem; }
+            header p { font-size: 1.2rem; }
+            section h2 { font-size: 1.8rem; }
             .skills-container { grid-template-columns: 1fr; }
         }
     </style>
@@ -157,7 +180,7 @@
 <body>
     <header>
         <h1>Sayani Banerjee</h1>
-        <p>Content Writer | Aspiring Marketing Strategist | First-Year MBA Student</p>
+        <p>Content Writer | Aspiring Marketing Strategist | MBA Student</p>
     </header>
     <main>
         <section id="about">
@@ -177,7 +200,18 @@
                     <h3>Digital Marketing</h3>
                     <p>Skilled in SEO, campaign management, and social media strategies to enhance brand reach.</p>
                 </div>
-                <!-- Add more skill cards here -->
+                <div class="skill-card">
+                    <h3>Research & Analysis</h3>
+                    <p>Adept at conducting market research and delivering actionable insights for business growth.</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Marketing Strategy</h3>
+                    <p>Proficient in planning and executing comprehensive marketing campaigns.</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Team Leadership</h3>
+                    <p>Experience in managing cross-functional teams and ensuring project alignment.</p>
+                </div>
             </div>
         </section>
         <section id="experience">
@@ -186,7 +220,14 @@
                 <h3>Zenius (Formerly Outreach Chimp) | Jan 2023 - Jul 2024</h3>
                 <p>Managed international branding campaigns, creating engaging promotional content tailored for US and UK audiences, while aligning with market trends.</p>
             </div>
-            <!-- Add more experience cards here -->
+            <div class="card">
+                <h3>TNQ Technologies | Nov 2021 - Nov 2022</h3>
+                <p>Proofread and quality-assured theses, maintaining 99% accuracy across biomedical and engineering domains for international universities.</p>
+            </div>
+            <div class="card">
+                <h3>Asiana Times | Apr 2021 - Sep 2021</h3>
+                <p>Authored over 20 articles on diverse topics, enhancing reader engagement and optimizing editorial standards within deadlines.</p>
+            </div>
         </section>
         <section id="education">
             <h2>Education</h2>
@@ -194,7 +235,10 @@
                 <h3>MBA in Marketing | EIILM, Kolkata</h3>
                 <p>Currently pursuing. Focus on Digital Marketing, Consumer Insights, and Strategic Brand Management.</p>
             </div>
-            <!-- Add more education cards here -->
+            <div class="card">
+                <h3>BA English Honours | Basanti Devi College</h3>
+                <p>Graduated in 2021. Built strong analytical and written communication skills.</p>
+            </div>
         </section>
         <section id="contact">
             <h2>Contact</h2>
@@ -207,3 +251,6 @@
     </main>
     <footer>
         <p>© 2024 Sayani Banerjee. All rights reserved.</p>
+    </footer>
+</body>
+</html>
