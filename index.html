@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sayani Banerjee - Modern Portfolio</title>
+    <title>Sayani Banerjee - Dynamic Portfolio</title>
     <style>
         /* General Styling */
         body {
             font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-            background: #f5f5f5;
+            background: #f0f2f5;
             color: #4a4a4a;
             line-height: 1.7;
             overflow-x: hidden;
@@ -25,6 +25,7 @@
             position: relative;
             animation: gradientShift 15s ease infinite;
             background-size: 400% 400%;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
         }
 
         @keyframes gradientShift {
@@ -37,18 +38,18 @@
             font-size: 4rem;
             font-weight: 900;
             margin: 0;
-            animation: fadeIn 1s ease-in-out;
+            animation: fadeInUp 1s ease-in-out;
         }
 
         header p {
             font-size: 1.5rem;
             font-weight: 300;
-            animation: fadeIn 1.5s ease-in-out;
+            animation: fadeInUp 1.5s ease-in-out;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         /* Main Layout */
@@ -60,7 +61,19 @@
 
         section {
             margin-bottom: 4rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideUp 1s ease-in-out forwards;
         }
+
+        @keyframes slideUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        section:nth-child(2) { animation-delay: 0.2s; }
+        section:nth-child(3) { animation-delay: 0.4s; }
+        section:nth-child(4) { animation-delay: 0.6s; }
+        section:nth-child(5) { animation-delay: 0.8s; }
 
         section h2 {
             color: #405de6;
@@ -70,6 +83,12 @@
             position: relative;
             text-transform: uppercase;
             letter-spacing: 2px;
+            animation: growText 0.3s ease-out forwards;
+        }
+
+        @keyframes growText {
+            from { transform: scale(0.9); }
+            to { transform: scale(1); }
         }
 
         section h2::after {
@@ -79,18 +98,31 @@
             height: 2px;
             background: #c13584;
             margin-top: 0.5rem;
+            transform-origin: left;
+            animation: lineGrow 0.3s ease-out forwards 0.3s;
+        }
+
+        @keyframes lineGrow {
+            from { width: 0; }
+            to { width: 60px; }
         }
 
         /* Cards */
         .card {
             background: #fff;
             border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
             padding: 2rem;
             margin-bottom: 2rem;
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         .card::before {
@@ -107,8 +139,8 @@
         }
 
         .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15);
+            transform: translateY(-5px) scale(1.01);
+            box-shadow: 0 20px 30px rgba(0,0,0,0.15);
         }
 
         .card:hover::before {
@@ -119,6 +151,7 @@
             font-size: 1.4rem;
             color: #405de6;
             margin-bottom: 0.5rem;
+            animation: fadeIn 0.5s ease-out forwards;
         }
 
         /* Skills Section */
@@ -134,13 +167,19 @@
             border-radius: 15px;
             padding: 1.5rem;
             text-align: center;
-            transition: transform 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            animation: zoomIn 0.5s ease-out forwards;
+        }
+
+        @keyframes zoomIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
         }
 
         .skill-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
 
         .skill-card h3 {
@@ -152,11 +191,12 @@
         .card a {
             color: #c13584;
             text-decoration: none;
-            transition: color 0.3s ease;
+            transition: color 0.3s ease, transform 0.3s ease;
         }
 
         .card a:hover {
             color: #e1306c;
+            transform: scale(1.05);
         }
 
         /* Footer */
@@ -166,6 +206,7 @@
             color: white;
             padding: 2rem 0;
             font-size: 0.9rem;
+            animation: fadeIn 1s ease-out forwards;
         }
 
         /* Responsive Design */
@@ -228,29 +269,4 @@
                 <h3>Asiana Times | Apr 2021 - Sep 2021</h3>
                 <p>Authored over 20 articles on diverse topics, enhancing reader engagement and optimizing editorial standards within deadlines.</p>
             </div>
-        </section>
-        <section id="education">
-            <h2>Education</h2>
-            <div class="card">
-                <h3>MBA in Marketing | EIILM, Kolkata</h3>
-                <p>Currently pursuing. Focus on Digital Marketing, Consumer Insights, and Strategic Brand Management.</p>
-            </div>
-            <div class="card">
-                <h3>BA English Honours | Basanti Devi College</h3>
-                <p>Graduated in 2021. Built strong analytical and written communication skills.</p>
-            </div>
-        </section>
-        <section id="contact">
-            <h2>Contact</h2>
-            <div class="card">
-                <p>Email: <a href="mailto:sayaniedu16@gmail.com">sayaniedu16@gmail.com</a></p>
-                <p>Phone: +91 80179 00442</p>
-                <p>LinkedIn: <a href="https://www.linkedin.com/in/sayani-b-2a43aa214/">Visit LinkedIn</a></p>
-            </div>
-        </section>
-    </main>
-    <footer>
-        <p>© 2024 Sayani Banerjee. All rights reserved.</p>
-    </footer>
-</body>
-</html>
+        </section
