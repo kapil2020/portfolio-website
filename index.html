@@ -110,6 +110,31 @@
         .card p {
             margin: 0.5rem 0 0;
         }
+
+        /* Infographic Bars */
+        .skill-bar {
+            position: relative;
+            display: block;
+            width: 100%;
+            background: #ecf0f1;
+            border-radius: 5px;
+            margin: 10px 0;
+            overflow: hidden;
+        }
+
+        .skill-bar span {
+            display: block;
+            height: 20px;
+            background: #4ca1af;
+            width: 0;
+            animation: loadBar 2s forwards;
+        }
+
+        @keyframes loadBar {
+            to {
+                width: 90%;
+            }
+        }
     </style>
 </head>
 <body>
@@ -121,7 +146,7 @@
         <section id="about">
             <h2>About Me</h2>
             <div class="card">
-                <p>I am a dynamic professional with expertise in content creation, proofreading, and client management. Currently pursuing an MBA in Marketing at EIILM, Kolkata, I aim to merge creativity with business strategy to achieve impactful results.</p>
+                <p>Dynamic and detail-oriented professional with over 2 years of experience in content writing, management, and proofreading. Currently pursuing an MBA in Marketing at EIILM, Kolkata, bringing strong communication, time management, and multitasking skills to the table. Proven ability to excel independently and within team settings, consistently delivering high-quality work.</p>
             </div>
         </section>
         <section id="skills">
@@ -133,18 +158,35 @@
                 <li>Communication and Public Speaking</li>
                 <li>Project Management and Team Leadership</li>
             </ul>
+            <h3>Proficiency</h3>
+            <div class="skill-bar"><span style="width: 95%;">Content Creation</span></div>
+            <div class="skill-bar"><span style="width: 85%;">Digital Marketing</span></div>
+            <div class="skill-bar"><span style="width: 90%;">Research & Analysis</span></div>
         </section>
-        <section id="projects">
-            <h2>Portfolio</h2>
+        <section id="experience">
+            <h2>Professional Experience</h2>
             <div class="card">
-                <h3>Content Writing</h3>
-                <p>Developed engaging content for international clients, boosting brand visibility and user engagement.</p>
-                <a href="https://drive.google.com/link-to-work" target="_blank" class="btn">View Content Portfolio</a>
+                <h3>Zenius (Formerly Outreach Chimp) | Jan 2023 - Jul 2024</h3>
+                <p>Wrote engaging brand deals and promotional content for international clients, primarily from the US and UK. Conducted client meetings to understand branding and promotional needs, and analyzed market trends to create effective strategies.</p>
             </div>
             <div class="card">
-                <h3>Marketing Campaigns</h3>
-                <p>Designed and executed digital marketing strategies as part of MBA projects, resulting in a 20% increase in customer engagement.</p>
-                <a href="#" class="btn">Explore Campaigns</a>
+                <h3>TNQ Technologies | Nov 2021 - Nov 2022</h3>
+                <p>Proofread theses from international universities focusing on biomedical and engineering subjects, ensuring clarity and adherence to styles. Collaborated with a team to maintain high-quality standards and meet deadlines.</p>
+            </div>
+            <div class="card">
+                <h3>Asiana Times | Apr 2021 - Sep 2021</h3>
+                <p>Wrote articles on diverse topics, tailoring content to engage readers. Collaborated with editorial teams to refine article quality and ensure timely publication.</p>
+            </div>
+        </section>
+        <section id="education">
+            <h2>Education</h2>
+            <div class="card">
+                <h3>MBA in Marketing | EIILM, Kolkata</h3>
+                <p>Currently pursuing. Focus: Marketing Strategy, Digital Marketing, Consumer Behavior.</p>
+            </div>
+            <div class="card">
+                <h3>BA English Honours | Basanti Devi College, Calcutta University</h3>
+                <p>Graduated in 2021. Strengthened analytical and writing skills through comprehensive coursework.</p>
             </div>
         </section>
         <section id="contact">
