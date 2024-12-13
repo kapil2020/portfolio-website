@@ -3,47 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sayani Banerjee - Modern Portfolio</title>
+    <title>Sayani Banerjee - Portfolio</title>
     <style>
         /* General Styling */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
         body {
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
-            background: #f5f5f5;
-            color: #4a4a4a;
-            line-height: 1.7;
+            background: #f8f9fa;
+            color: #343a40;
+            line-height: 1.6;
             overflow-x: hidden;
         }
 
         /* Header */
         header {
-            background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+            background: linear-gradient(135deg, #4CA1AF, #2C3E50);
             color: white;
             text-align: center;
-            padding: 4rem 0;
-            position: relative;
-            animation: gradientShift 15s ease infinite;
-            background-size: 400% 400%;
-        }
-
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            padding: 4rem 1rem;
         }
 
         header h1 {
-            font-size: 4rem;
-            font-weight: 900;
+            font-size: 3.5rem;
+            font-weight: 700;
             margin: 0;
-            animation: fadeIn 1s ease-in-out;
+            animation: slideInFromLeft 1s ease-out;
         }
 
         header p {
-            font-size: 1.5rem;
-            font-weight: 300;
+            font-size: 1.2rem;
+            margin-top: 1rem;
             animation: fadeIn 1.5s ease-in-out;
+        }
+
+        @keyframes slideInFromLeft {
+            from { transform: translateX(-100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
         }
 
         @keyframes fadeIn {
@@ -54,133 +52,105 @@
         /* Main Layout */
         main {
             max-width: 1200px;
-            margin: auto;
+            margin: 0 auto;
             padding: 2rem;
         }
 
         section {
             margin-bottom: 4rem;
+            animation: fadeIn 1.5s ease-in-out;
         }
 
         section h2 {
-            color: #405de6;
-            font-size: 2.2rem;
-            font-weight: 700;
+            color: #4CA1AF;
+            font-size: 2.5rem;
+            font-weight: 600;
+            text-transform: uppercase;
             margin-bottom: 1rem;
             position: relative;
-            text-transform: uppercase;
-            letter-spacing: 2px;
         }
 
         section h2::after {
             content: '';
             display: block;
             width: 60px;
-            height: 2px;
-            background: #c13584;
+            height: 3px;
+            background: #4CA1AF;
             margin-top: 0.5rem;
         }
 
         /* Cards */
         .card {
-            background: #fff;
-            border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-            padding: 2rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
             margin-bottom: 2rem;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, transparent, rgba(64, 93, 230, 0.2));
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: -1;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
 
         .card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15);
-        }
-
-        .card:hover::before {
-            opacity: 1;
-        }
-
-        .card h3 {
-            font-size: 1.4rem;
-            color: #405de6;
-            margin-bottom: 0.5rem;
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
         }
 
         /* Skills Section */
         .skills-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
         }
 
         .skill-card {
-            background: linear-gradient(45deg, #405de6, #5851db);
+            background: linear-gradient(135deg, #4CA1AF, #2C3E50);
             color: white;
-            border-radius: 15px;
             padding: 1.5rem;
             text-align: center;
-            transition: transform 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .skill-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
         }
 
         .skill-card h3 {
-            font-size: 1.3rem;
             margin-bottom: 0.5rem;
         }
 
         /* Contact Info */
         .card a {
-            color: #c13584;
+            color: #4CA1AF;
             text-decoration: none;
-            transition: color 0.3s ease;
         }
 
         .card a:hover {
-            color: #e1306c;
+            text-decoration: underline;
         }
 
         /* Footer */
         footer {
-            text-align: center;
-            background: #222;
+            background: #2C3E50;
             color: white;
-            padding: 2rem 0;
+            text-align: center;
+            padding: 1rem;
             font-size: 0.9rem;
         }
 
         /* Responsive Design */
         @media (max-width: 768px) {
-            header h1 { font-size: 3rem; }
-            header p { font-size: 1.2rem; }
-            section h2 { font-size: 1.8rem; }
-            .skills-container { grid-template-columns: 1fr; }
+            header h1 { font-size: 2.5rem; }
+            header p { font-size: 1rem; }
+            section h2 { font-size: 2rem; }
         }
     </style>
 </head>
 <body>
     <header>
         <h1>Sayani Banerjee</h1>
-        <p>Content Writer | Aspiring Marketing Strategist | MBA Student</p>
+        <p>Content Writer | Aspiring Marketing Strategist | First-Year MBA Student</p>
     </header>
     <main>
         <section id="about">
@@ -202,15 +172,11 @@
                 </div>
                 <div class="skill-card">
                     <h3>Research & Analysis</h3>
-                    <p>Adept at conducting market research and delivering actionable insights for business growth.</p>
-                </div>
-                <div class="skill-card">
-                    <h3>Marketing Strategy</h3>
-                    <p>Proficient in planning and executing comprehensive marketing campaigns.</p>
+                    <p>Proficient in market research to deliver actionable insights for strategic decisions.</p>
                 </div>
                 <div class="skill-card">
                     <h3>Team Leadership</h3>
-                    <p>Experience in managing cross-functional teams and ensuring project alignment.</p>
+                    <p>Experienced in managing cross-functional teams to achieve project goals.</p>
                 </div>
             </div>
         </section>
@@ -222,11 +188,11 @@
             </div>
             <div class="card">
                 <h3>TNQ Technologies | Nov 2021 - Nov 2022</h3>
-                <p>Proofread and quality-assured theses, maintaining 99% accuracy across biomedical and engineering domains for international universities.</p>
+                <p>Proofread academic theses, ensuring clarity and accuracy, while collaborating with clients to maintain high standards.</p>
             </div>
             <div class="card">
                 <h3>Asiana Times | Apr 2021 - Sep 2021</h3>
-                <p>Authored over 20 articles on diverse topics, enhancing reader engagement and optimizing editorial standards within deadlines.</p>
+                <p>Wrote articles on diverse topics, conducted in-depth research, and collaborated with editors to produce quality content.</p>
             </div>
         </section>
         <section id="education">
@@ -236,8 +202,8 @@
                 <p>Currently pursuing. Focus on Digital Marketing, Consumer Insights, and Strategic Brand Management.</p>
             </div>
             <div class="card">
-                <h3>BA English Honours | Basanti Devi College</h3>
-                <p>Graduated in 2021. Built strong analytical and written communication skills.</p>
+                <h3>BA in English Honours | Basanti Devi College</h3>
+                <p>Graduated in 2021. Specialized in analytical and written communication skills.</p>
             </div>
         </section>
         <section id="contact">
