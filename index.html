@@ -4,9 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sayani Banerjee - Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
     <style>
-        /* Inline CSS for demonstration */
+        /* General Styling */
         body {
             font-family: 'Arial', sans-serif;
             margin: 0;
@@ -17,29 +16,35 @@
         }
 
         header {
-            background: #2c3e50;
+            background: linear-gradient(90deg, #2c3e50, #4ca1af);
             color: #fff;
             text-align: center;
-            padding: 1rem 0;
+            padding: 2rem 0;
         }
 
         header h1 {
-            font-size: 2.5rem;
+            font-size: 3rem;
             margin: 0;
+        }
+
+        header p {
+            font-size: 1.2rem;
         }
 
         main {
             padding: 2rem;
-            max-width: 800px;
+            max-width: 1200px;
             margin: auto;
         }
 
         section {
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
         }
 
         section h2 {
             color: #2c3e50;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
         }
 
         ul {
@@ -50,8 +55,9 @@
         ul li {
             background: #ecf0f1;
             margin: 0.5rem 0;
-            padding: 0.5rem;
-            border-radius: 5px;
+            padding: 0.8rem;
+            border-radius: 8px;
+            font-size: 1rem;
         }
 
         .btn {
@@ -62,6 +68,7 @@
             text-decoration: none;
             border-radius: 5px;
             transition: background 0.3s;
+            font-size: 1rem;
         }
 
         .btn:hover {
@@ -70,7 +77,7 @@
 
         footer {
             text-align: center;
-            padding: 1rem;
+            padding: 1.5rem;
             background: #2c3e50;
             color: #fff;
             margin-top: 2rem;
@@ -78,38 +85,75 @@
 
         footer p {
             margin: 0;
+            font-size: 0.9rem;
+        }
+
+        /* Card Styling */
+        .card {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card h3 {
+            margin-top: 0;
+            color: #4ca1af;
+        }
+
+        .card p {
+            margin: 0.5rem 0 0;
         }
     </style>
 </head>
 <body>
     <header>
         <h1>Sayani Banerjee</h1>
-        <p>Content Writer | Aspiring Business Strategist | First-Year MBA Student</p>
+        <p>Content Writer | Aspiring Marketing Strategist | First-Year MBA Student</p>
     </header>
     <main>
         <section id="about">
             <h2>About Me</h2>
-            <p>Dynamic professional with expertise in content creation, proofreading, and client management. Skilled in multitasking and meeting deadlines.</p>
+            <div class="card">
+                <p>I am a dynamic professional with expertise in content creation, proofreading, and client management. Currently pursuing an MBA in Marketing at EIILM, Kolkata, I aim to merge creativity with business strategy to achieve impactful results.</p>
+            </div>
         </section>
         <section id="skills">
             <h2>Skills</h2>
             <ul>
                 <li>Content Development: Writing, Editing, Proofreading</li>
-                <li>Research and Analysis</li>
-                <li>Project Management</li>
-                <li>Communication</li>
-                <li>Teaching and Mentoring</li>
+                <li>Marketing Research and Strategy</li>
+                <li>Digital Marketing Tools and Campaigns</li>
+                <li>Communication and Public Speaking</li>
+                <li>Project Management and Team Leadership</li>
             </ul>
         </section>
         <section id="projects">
             <h2>Portfolio</h2>
-            <p>Check out my latest works:</p>
-            <a href="https://drive.google.com/link-to-work" target="_blank" class="btn">View Portfolio</a>
+            <div class="card">
+                <h3>Content Writing</h3>
+                <p>Developed engaging content for international clients, boosting brand visibility and user engagement.</p>
+                <a href="https://drive.google.com/link-to-work" target="_blank" class="btn">View Content Portfolio</a>
+            </div>
+            <div class="card">
+                <h3>Marketing Campaigns</h3>
+                <p>Designed and executed digital marketing strategies as part of MBA projects, resulting in a 20% increase in customer engagement.</p>
+                <a href="#" class="btn">Explore Campaigns</a>
+            </div>
         </section>
         <section id="contact">
             <h2>Contact</h2>
-            <p>Email: sayaniedu16@gmail.com</p>
-            <p>Phone: +91 80179 00442</p>
+            <div class="card">
+                <p>Email: <a href="mailto:sayaniedu16@gmail.com">sayaniedu16@gmail.com</a></p>
+                <p>Phone: +91 80179 00442</p>
+                <p>LinkedIn: <a href="#">LinkedIn Profile</a></p>
+            </div>
         </section>
     </main>
     <footer>
