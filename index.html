@@ -88,27 +88,35 @@
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
         }
 
-        .skill-bar {
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-card {
+            background: linear-gradient(135deg, #4ca1af, #2c3e50);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
             position: relative;
-            width: 100%;
-            background: #ecf0f1;
-            border-radius: 5px;
-            margin: 15px 0;
             overflow: hidden;
+            transition: transform 0.3s;
         }
 
-        .skill-bar span {
-            display: block;
-            height: 20px;
-            background: linear-gradient(90deg, #4ca1af, #2c3e50);
-            width: 0;
-            animation: loadBar 2s forwards;
+        .skill-card:hover {
+            transform: scale(1.05);
         }
 
-        @keyframes loadBar {
-            to {
-                width: 95%;
-            }
+        .skill-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-card p {
+            font-size: 1rem;
+            margin: 0;
         }
 
         footer {
@@ -138,10 +146,28 @@
         </section>
         <section id="skills">
             <h2>Skills</h2>
-            <h3>Proficiency</h3>
-            <div class="skill-bar"><span style="width: 95%;">Content Creation</span></div>
-            <div class="skill-bar"><span style="width: 85%;">Digital Marketing</span></div>
-            <div class="skill-bar"><span style="width: 90%;">Research & Analysis</span></div>
+            <div class="skills-container">
+                <div class="skill-card">
+                    <h3>Content Creation</h3>
+                    <p>Expert in crafting engaging and impactful content tailored for various audiences.</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Digital Marketing</h3>
+                    <p>Skilled in SEO, campaign management, and social media strategies to enhance brand reach.</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Research & Analysis</h3>
+                    <p>Adept at conducting market research and delivering actionable insights for business growth.</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Marketing Strategy</h3>
+                    <p>Proficient in planning and executing comprehensive marketing campaigns.</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Team Leadership</h3>
+                    <p>Experience in managing cross-functional teams and ensuring project alignment.</p>
+                </div>
+            </div>
         </section>
         <section id="experience">
             <h2>Professional Experience</h2>
