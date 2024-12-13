@@ -7,33 +7,41 @@
     <style>
         /* General Styling */
         body {
-            font-family: 'Lato', sans-serif;
+            font-family: 'Montserrat', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f7f7f7;
+            background: linear-gradient(135deg, #f0f0f0, #e6e6e6);
             color: #333;
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         /* Header */
         header {
-            background-color: #3457d5;
+            background: linear-gradient(45deg, #00416A, #E4E5E6);
             color: white;
             text-align: center;
-            padding: 3rem 0;
+            padding: 4rem 0;
             position: relative;
+            animation: gradientBG 15s ease infinite;
+            background-size: 400% 400%;
+        }
+
+        @keyframes gradientBG {
+            0% {background-position: 0% 50%;}
+            50% {background-position: 100% 50%;}
+            100% {background-position: 0% 50%;}
         }
 
         header h1 {
-            font-size: 3rem;
+            font-size: 3.5rem;
             margin: 0;
-            font-weight: 700;
+            font-weight: 900;
             animation: fadeInDown 1s ease-out;
         }
 
         header p {
-            font-size: 1.2rem;
-            opacity: 0.8;
+            font-size: 1.5rem;
             animation: fadeInUp 1s ease-out;
         }
 
@@ -47,44 +55,54 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Main Content */
+        /* Main Layout */
         main {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 2rem;
+            padding: 2rem 1rem;
         }
 
         section {
             margin-bottom: 4rem;
             opacity: 0;
             transform: translateY(20px);
-            animation: fadeInUp 1s ease-out forwards;
+            animation: slideUp 1s ease-in-out forwards;
+        }
+
+        @keyframes slideUp {
+            to { opacity: 1; transform: translateY(0); }
         }
 
         section h2 {
-            color: #3457d5;
-            font-size: 2rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
+            color: #00416A;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
             position: relative;
-            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: scaleUp 0.5s ease-out forwards;
         }
 
-        section h2::before {
+        @keyframes scaleUp {
+            from { transform: scale(0.9); }
+            to { transform: scale(1); }
+        }
+
+        section h2::after {
             content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: #00a8ff;
-            transform: scaleX(0);
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: #E4E5E6;
+            margin-top: 0.5rem;
             transform-origin: left;
-            transition: transform 0.3s ease-out;
+            animation: lineScale 0.5s ease-out forwards 0.5s;
         }
 
-        section h2:hover::before {
-            transform: scaleX(1);
+        @keyframes lineScale {
+            from { transform: scaleX(0); }
+            to { transform: scaleX(1); }
         }
 
         /* Timeline */
@@ -98,93 +116,137 @@
             content: '';
             position: absolute;
             top: 0;
-            left: 1.5em;
-            width: 4px;
+            left: 50%;
+            width: 2px;
             height: 100%;
-            background: #e6e6e6;
+            background: #00416A;
         }
 
         .timeline-item {
+            width: 45%;
             position: relative;
             margin-bottom: 30px;
+        }
+
+        .timeline-item:nth-child(odd) {
+            float: left;
+            clear: left;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) {
+            float: right;
+            clear: right;
+            text-align: left;
         }
 
         .timeline-item::after {
             content: '';
             position: absolute;
-            width: 25px;
-            height: 25px;
-            left: 1em;
+            width: 15px;
+            height: 15px;
             top: 0;
-            background: #3457d5;
+            background: #E4E5E6;
             border-radius: 50%;
-            border: 3px solid #fff;
+            border: 3px solid #00416A;
             z-index: 1;
         }
 
+        .timeline-item:nth-child(odd)::after {
+            right: -9px;
+        }
+
+        .timeline-item:nth-child(even)::after {
+            left: -9px;
+        }
+
         .timeline-content {
-            padding: 1.5em 0 1.5em 4em;
+            padding: 1.5em;
             background: #fff;
-            border-radius: 5px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: scale(1.05);
         }
 
         .timeline-content h3 {
-            margin-top: 0;
-            color: #3457d5;
+            color: #00416A;
         }
 
         /* Skills */
-        .skills-list {
+        .skills-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 1rem;
         }
 
-        .skill-item {
-            background: #e6e6e6;
+        .skill-card {
+            background: linear-gradient(45deg, #00416A, #797D7F);
+            color: white;
+            border-radius: 15px;
             padding: 1rem;
-            border-radius: 5px;
             text-align: center;
-            transition: background 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            animation: fadeIn 0.5s ease-out forwards;
         }
 
-        .skill-item:hover {
-            background: #3457d5;
-            color: white;
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
         }
 
         /* Contact */
         .contact-info {
             display: flex;
-            flex-direction: column;
-            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
         }
 
-        .contact-info a {
-            color: #3457d5;
+        .contact-item {
+            padding: 1rem;
+            border-radius: 10px;
+            background: #fff;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .contact-item a {
+            color: #00416A;
             text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .contact-info a:hover {
-            color: #00a8ff;
         }
 
         /* Footer */
         footer {
             text-align: center;
-            background: #333;
+            background: #00416A;
             color: white;
             padding: 1rem 0;
+            animation: fadeIn 1s ease-out forwards;
         }
 
         /* Responsive Design */
         @media (max-width: 768px) {
             header h1 { font-size: 2.5rem; }
-            header p { font-size: 1rem; }
+            header p { font-size: 1.2rem; }
             section h2 { font-size: 1.8rem; }
-            .skills-list { grid-template-columns: 1fr; }
+            .timeline-item { width: 100%; text-align: left; }
+            .timeline-item:nth-child(odd), .timeline-item:nth-child(even) { float: none; clear: none; }
+            .timeline-item::after { left: 0; }
+            .skills-container { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -240,26 +302,30 @@
         </section>
         <section id="skills">
             <h2>Key Skills</h2>
-            <ul class="skills-list">
-                <li class="skill-item">Leadership & Team Management</li>
-                <li class="skill-item">Strategic Marketing</li>
-                <li class="skill-item">Digital Marketing & SEO</li>
-                <li class="skill-item">Data Analysis & Visualization</li>
-                <li class="skill-item">Content Creation</li>
-                <li class="skill-item">Market Research</li>
-            </ul>
+            <div class="skills-container">
+                <div class="skill-card">
+                    <h3>Leadership</h3>
+                    <p>Strategic team management and project leadership.</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Digital Marketing</h3>
+                    <p>SEO, analytics, and social media strategy.</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Content Strategy</h3>
+                    <p>Creating engaging content for diverse audiences.</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Data Analysis</h3>
+                    <p>Utilizing data for informed marketing decisions.</p>
+                </div>
+            </div>
         </section>
         <section id="contact">
             <h2>Contact</h2>
             <div class="contact-info">
-                <p>Email: <a href="mailto:sayaniedu16@gmail.com">sayaniedu16@gmail.com</a></p>
-                <p>Phone: +91 80179 00442</p>
-                <p>LinkedIn: <a href="https://www.linkedin.com/in/sayani-b-2a43aa214/">View Profile</a></p>
-            </div>
-        </section>
-    </main>
-    <footer>
-        <p>© 2024 Sayani Banerjee. All rights reserved.</p>
-    </footer>
-</body>
-</html>
+                <div class="contact-item">
+                    <a href="mailto:sayaniedu16@gmail.com">Email</a>
+                </div>
+                <div class="contact-item">
+                    
