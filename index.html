@@ -102,11 +102,17 @@
             margin: 0.5rem 0;
         }
 
-        /* Infographic Elements */
-        .infographic {
-            width: 100%;
-            height: auto;
-            margin-top: 1rem;
+        /* Animated Emojis */
+        .emoji {
+            display: inline-block;
+            font-size: 2em;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
         }
 
         /* Responsive Design */
@@ -142,8 +148,7 @@
                     - Conducted client meetings to tailor content to specific branding needs.<br>
                     - Researched and analyzed market trends to craft strategic promotional content.<br>
                 </p>
-                <!-- You can insert an infographic here to visually represent your achievements, e.g., a chart of client satisfaction or impact metrics -->
-                <img class="infographic" src="path/to/your/infographic1.jpg" alt="Infographic of client engagement improvement">
+                <span class="emoji">📈</span> <!-- Animated emoji representing growth or analysis -->
             </div>
 
             <div class="experience-card">
@@ -153,8 +158,7 @@
                     - Collaborated with teams to maintain high standards, correcting grammar, punctuation, and formatting.<br>
                     - Managed client communications to update on project statuses and address concerns.<br>
                 </p>
-                <!-- Infographic for proofreading efficiency or client feedback -->
-                <img class="infographic" src="path/to/your/infographic2.jpg" alt="Infographic showing proofreading efficiency">
+                <span class="emoji">📝</span> <!-- Animated emoji for proofreading -->
             </div>
 
             <div class="experience-card">
@@ -164,8 +168,7 @@
                     - Worked closely with editorial teams to refine content quality and meet publication deadlines.<br>
                     - Kept abreast of current events to deliver timely and relevant content.<br>
                 </p>
-                <!-- Infographic could show article reach or reader engagement stats -->
-                <img class="infographic" src="path/to/your/infographic3.jpg" alt="Infographic on article readership">
+                <span class="emoji">📰</span> <!-- Animated emoji representing journalism -->
             </div>
         </section>
     </main>
