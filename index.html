@@ -175,6 +175,11 @@
             position: relative;
             padding-left: 20px;
             margin-bottom: 2rem;
+            display: none;
+        }
+
+        .timeline li.active {
+            display: block;
         }
 
         .timeline li::before {
@@ -189,6 +194,31 @@
         .timeline h3 {
             margin: 0;
             font-size: 1.2rem;
+        }
+
+        .year-selector button {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            margin: 0 5px 10px 0;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .year-selector button:hover, .year-selector button.active {
+            background: var(--secondary-color);
+        }
+
+        .skill-card {
+            border: 1px solid transparent;
+            transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+        }
+
+        .skill-card:hover {
+            border-color: var(--primary-color);
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
         /* Footer */
@@ -230,23 +260,23 @@
         <section id="skills">
             <h2>Skills</h2>
             <div class="skills-container">
-                <div class="skill-card">
+                <div class="skill-card" data-skill="Content Creation">
                     <h3>Content Creation</h3>
                     <p>Expert in crafting engaging content tailored for various audiences.</p>
                 </div>
-                <div class="skill-card">
+                <div class="skill-card" data-skill="Digital Marketing">
                     <h3>Digital Marketing</h3>
                     <p>Skilled in SEO, campaign management, and social media strategies.</p>
                 </div>
-                <div class="skill-card">
+                <div class="skill-card" data-skill="Research & Analysis">
                     <h3>Research & Analysis</h3>
                     <p>Adept at conducting market research and delivering actionable insights.</p>
                 </div>
-                <div class="skill-card">
+                <div class="skill-card" data-skill="Marketing Strategy">
                     <h3>Marketing Strategy</h3>
                     <p>Proficient in planning and executing comprehensive marketing campaigns.</p>
                 </div>
-                <div class="skill-card">
+                <div class="skill-card" data-skill="Technical Proficiency">
                     <h3>Technical Proficiency</h3>
                     <p>LaTeX, Tableau, Power BI, Canva, and Adobe Suite.</p>
                 </div>
@@ -255,44 +285,55 @@
         <section id="experience">
             <h2>Professional Experience</h2>
             <ul class="timeline">
-                <li>
+                <li data-year="2025">
                     <h3>2025 - Present: Research Intern | IIT Kharagpur</h3>
                     <p>Conducting in-depth research on content strategies for emerging technologies. Analyzing data trends to refine content marketing frameworks. Collaborating with academic and industry leaders to produce high-impact publications.</p>
                 </li>
-                <li>
+                <li data-year="2023">
                     <h3>2023 - 2024: Content Writer | Outreach Chimp</h3>
                     <p>Crafted compelling brand promotions for UK/US brands. Aligned content with brand identity to meet marketing objectives. Enhanced brand visibility by boosting engagement significantly.</p>
                 </li>
-                <li>
+                <li data-year="2021">
                     <h3>2021 - 2022: Associate Language Editor | TNQ Technologies</h3>
                     <p>Proofread and edited science and non-science manuscripts with high accuracy. Improved process efficiency by reducing turnaround time. Maintained adherence to house style for optimal quality.</p>
                 </li>
-                <li>
+                <li data-year="2021">
                     <h3>2021: Content Writer Intern | Asiana Times</h3>
                     <p>Authored diverse lifestyle, media, and socio-political content. Contributed critical analysis on controversial subjects, adding depth to discussions. Enhanced content strategy, increasing readership significantly.</p>
                 </li>
             </ul>
+            <div class="year-selector">
+                <button data-year="2025">2025</button>
+                <button data-year="2023">2023</button>
+                <button data-year="2021">2021</button>
+            </div>
         </section>
         <section id="education">
             <h2>Education</h2>
             <ul class="timeline">
-                <li>
+                <li data-year="Ongoing">
                     <h3>Ongoing: MBA in Marketing | EIILM, Kolkata</h3>
                     <p>Focus on Digital Marketing, Consumer Behavior, and Strategic Brand Management.</p>
                 </li>
-                <li>
+                <li data-year="2021">
                     <h3>2021: Bachelor of Arts English Honours | University of Calcutta</h3>
                     <p>Developed strong analytical and communication skills through intensive coursework and projects.</p>
                 </li>
-                <li>
+                <li data-year="2018">
                     <h3>2018: ISC (Humanities) | Hirendra Leela Patra Navis School, Kolkata</h3>
                     <p>Gained foundational knowledge in communication and critical thinking.</p>
                 </li>
-                <li>
+                <li data-year="2016">
                     <h3>2016: ICSE (Science) | Hirendra Leela Patra Navis School, Kolkata</h3>
                     <p>Built a strong base in analytical and logical reasoning.</p>
                 </li>
             </ul>
+            <div class="year-selector">
+                <button data-year="Ongoing">Ongoing</button>
+                <button data-year="2021">2021</button>
+                <button data-year="2018">2018</button>
+                <button data-year="2016">2016</button>
+            </div>
         </section>
     </main>
     <footer>
@@ -301,9 +342,47 @@
     <button id="theme-toggle">Toggle Dark Mode</button>
 
     <script>
-        const themeToggle = document.getElementById('theme-toggle');
-        themeToggle.addEventListener('click', () => {
-            document.body.dataset.theme = document.body.dataset.theme === 'dark' ? '' : 'dark';
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeToggle = document.getElementById('theme-toggle');
+            themeToggle.addEventListener('click', () => {
+                document.body.dataset.theme = document.body.dataset.theme === 'dark' ? '' : 'dark';
+            });
+
+            // Function to handle timeline interaction
+            function setupTimeline(section) {
+                const buttons = document.querySelectorAll(`#${section} .year-selector button`);
+                const items = document.querySelectorAll(`#${section} .timeline li`);
+
+                buttons.forEach(button => {
+                    button.addEventListener('click', function() {
+                        const year = this.getAttribute('data-year');
+                        buttons.forEach(btn => btn.classList.remove('active'));
+                        this.classList.add('active');
+                        items.forEach(item => {
+                            if (item.getAttribute('data-year') === year) {
+                                item.classList.add('active');
+                            } else {
+                                item.classList.remove('active');
+                            }
+                        });
+                    });
+                });
+                // Default show first item
+                if (buttons.length > 0) {
+                    buttons[0].click();
+                }
+            }
+
+            setupTimeline('experience');
+            setupTimeline('education');
+
+            // Skill cards interaction
+            const skillCards = document.querySelectorAll('.skill-card');
+            skillCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    alert('You clicked on: ' + this.getAttribute('data-skill'));
+                });
+            });
         });
     </script>
 </body>
