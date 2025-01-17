@@ -1,451 +1,789 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sayani Banerjee - Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        :root {
-            --primary-color: #4CA1AF;
-            --secondary-color: #2C3E50;
-            --background-color: #f9f9f9;
-            --text-color: #333;
-            --accent-color: #FFC107;
-            --gradient-bg: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-        }
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+  <title>Sayani Banerjee - Portfolio</title>
 
-        [data-theme="dark"] {
-            --primary-color: #2C3E50;
-            --secondary-color: #4CA1AF;
-            --background-color: #121212;
-            --text-color: #f1f1f1;
-            --accent-color: #FFEB3B;
-            --gradient-bg: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
-        }
+  <!-- Font Awesome (for icons) -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+  />
 
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background: var(--gradient-bg), url('path/to/subtle-grid.png') fixed;
-            background-size: auto, 200px 200px;
-            color: var(--text-color);
-            line-height: 1.6;
-            transition: background 0.3s, color 0.3s;
-        }
+  <style>
+    /* =========================================
+       1. CSS VARIABLES & THEME
+    ========================================= */
+    :root {
+      --primary-color: #4ca1af;
+      --secondary-color: #2c3e50;
+      --background-color: #f9f9f9;
+      --text-color: #333;
+      --accent-color: #ffc107;
 
-        header {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(5px);
-            color: white;
-            text-align: center;
-            padding: 4rem 2rem;
-            margin-bottom: 2rem;
-            border-radius: 0 0 20px 20px;
-        }
+      /* Additional */
+      --max-width: 1200px;
+    }
 
-        header h1 {
-            font-size: 2.5rem;
-            margin: 0;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-        }
+    [data-theme="dark"] {
+      --primary-color: #2c3e50;
+      --secondary-color: #4ca1af;
+      --background-color: #121212;
+      --text-color: #f1f1f1;
+      --accent-color: #ffeb3b;
+    }
 
-        header p {
-            font-size: 1.2rem;
-            margin: 0.5rem 0;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
-        }
+    /* Smooth transitions for theme changes */
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
 
-        .social-icons {
-            margin-top: 1rem;
-        }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: var(--background-color);
+      color: var(--text-color);
+      line-height: 1.6;
+      transition: background 0.3s, color 0.3s;
+    }
 
-        .social-icons a {
-            color: white;
-            text-decoration: none;
-            margin: 0 10px;
-            font-size: 1.5rem;
-            transition: transform 0.3s, color 0.3s;
-        }
+    /* =========================================
+       2. SCROLL PROGRESS BAR
+    ========================================= */
+    #scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 4px;
+      background: var(--accent-color);
+      z-index: 9999;
+      transition: width 0.25s ease-out;
+    }
 
-        .social-icons a:hover {
-            transform: scale(1.2);
-            color: var(--accent-color);
-        }
+    /* =========================================
+       3. NAVIGATION
+    ========================================= */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: var(--secondary-color);
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      z-index: 9998;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    }
 
-        .cta-buttons a {
-            display: inline-block;
-            text-decoration: none;
-            background: var(--accent-color);
-            color: var(--secondary-color);
-            padding: 0.7rem 1.5rem;
-            border-radius: 5px;
-            margin: 1rem 0.5rem 0;
-            font-weight: bold;
-            transition: all 0.3s;
-            border: none;
-        }
+    .nav-container {
+      width: 100%;
+      max-width: var(--max-width);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.7rem 1rem;
+    }
 
-        .cta-buttons a:hover {
-            background: var(--secondary-color);
-            color: var(--accent-color);
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transform: translateY(-2px);
-        }
+    .nav-logo {
+      font-size: 1.2rem;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
 
-        #theme-toggle {
-            position: fixed;
-            top: 1rem;
-            right: 1rem;
-            background: transparent;
-            color: var(--text-color);
-            border: 2px solid var(--text-color);
-            border-radius: 50%;
-            padding: 0.5rem;
-            cursor: pointer;
-            font-size: 1.2rem;
-            transition: all 0.3s;
-            z-index: 1000;
-        }
+    .nav-menu {
+      display: flex;
+      gap: 1rem;
+    }
 
-        #theme-toggle:hover {
-            background: var(--text-color);
-            color: var(--background-color);
-            transform: rotate(360deg);
-        }
+    .nav-menu a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 0.9rem;
+      transition: color 0.3s;
+    }
 
-        main {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 10px;
-        }
+    .nav-menu a:hover {
+      color: var(--accent-color);
+    }
 
-        section {
-            margin-bottom: 3rem;
-            padding: 1rem;
-        }
+    /* =========================================
+       4. THEME TOGGLE
+    ========================================= */
+    #theme-toggle {
+      background: transparent;
+      color: #fff;
+      border: 2px solid #fff;
+      border-radius: 50%;
+      padding: 0.4rem;
+      cursor: pointer;
+      font-size: 1.1rem;
+      transition: background-color 0.3s, color 0.3s;
+    }
 
-        section h2 {
-            font-size: 2rem;
-            color: var(--secondary-color);
-            position: relative;
-            margin-bottom: 1rem;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-        }
+    #theme-toggle:hover {
+      background: var(--accent-color);
+      color: var(--secondary-color);
+    }
 
-        section h2::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 2px;
-            background: var(--accent-color);
-            margin-top: 0.5rem;
-        }
+    /* =========================================
+       5. HEADER / HERO SECTION
+    ========================================= */
+    header {
+      /* Subtle background pattern or image */
+      background: linear-gradient(
+          rgba(0, 0, 0, 0.25),
+          rgba(0, 0, 0, 0.3)
+        ),
+        url('https://picsum.photos/2000/1200?blur=3') center/cover no-repeat;
+      color: white;
+      text-align: center;
+      padding: 6rem 2rem 4rem;
+      position: relative;
+      margin-top: 3.5rem; /* to offset the fixed nav */
+      clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    }
 
-        .card {
-            background: var(--background-color);
-            border: 1px solid var(--primary-color);
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            transition: all 0.3s;
-        }
+    header h1 {
+      font-size: 2.5rem;
+      margin: 0;
+    }
 
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-        }
+    header p {
+      font-size: 1.2rem;
+      margin: 0.5rem 0;
+    }
 
-        .timeline {
-            position: relative;
-            margin: 2rem 0;
-            padding: 0;
-            list-style: none;
-        }
+    .social-icons {
+      margin-top: 1rem;
+    }
 
-        .timeline li {
-            position: relative;
-            padding-left: 20px;
-            margin-bottom: 2rem;
-            display: none;
-        }
+    .social-icons a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+      font-size: 1.5rem;
+      transition: transform 0.3s;
+    }
 
-        .timeline li.active {
-            display: block;
-        }
+    .social-icons a:hover {
+      transform: scale(1.2);
+    }
 
-        .timeline li::before {
-            content: '\25CF';
-            position: absolute;
-            left: 0;
-            top: 0.5rem;
-            color: var(--primary-color);
-            font-size: 1.2rem;
-        }
+    .cta-buttons a {
+      display: inline-block;
+      text-decoration: none;
+      background: var(--accent-color);
+      color: var(--secondary-color);
+      padding: 0.7rem 1.5rem;
+      border-radius: 5px;
+      margin: 1rem 0.5rem 0;
+      font-weight: bold;
+      transition: background-color 0.3s, color 0.3s;
+    }
 
-        .timeline h3 {
-            margin: 0;
-            font-size: 1.1rem;
-            color: var(--secondary-color);
-        }
+    .cta-buttons a:hover {
+      background: var(--secondary-color);
+      color: var(--accent-color);
+    }
 
-        .year-selector {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin-top: 1rem;
-        }
+    /* =========================================
+       6. MAIN CONTENT
+    ========================================= */
+    main {
+      max-width: var(--max-width);
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
 
-        .year-selector button {
-            background: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 0.5rem 1rem;
-            margin: 0.25rem;
-            cursor: pointer;
-            transition: all 0.3s;
-            border-radius: 4px;
-        }
+    section {
+      margin-bottom: 3rem;
+    }
 
-        .year-selector button:hover, .year-selector button.active {
-            background: var(--secondary-color);
-            transform: scale(1.05);
-        }
+    section h2 {
+      font-size: 2rem;
+      color: var(--secondary-color);
+      position: relative;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
 
-        .skills-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-        }
+    section h2::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 2px;
+      background: var(--accent-color);
+      margin: 0.5rem auto 0;
+    }
 
-        .skill-card {
-            background: var(--background-color);
-            border: 1px solid var(--primary-color);
-            padding: 1rem;
-            border-radius: 8px;
-            transition: all 0.3s;
-            cursor: pointer;
-        }
+    /* =========================================
+       7. ABOUT SECTION
+    ========================================= */
+    .card {
+      background: var(--background-color);
+      border: 1px solid var(--primary-color);
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
 
-        .skill-card:hover {
-            border-color: var(--accent-color);
-            background: rgba(76, 161, 175, 0.1);
-            transform: scale(1.02);
-        }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
 
-        footer {
-            background: var(--secondary-color);
-            color: white;
-            text-align: center;
-            padding: 1.5rem 0;
-            font-size: 0.9rem;
-        }
+    /* =========================================
+       8. SKILLS SECTION
+    ========================================= */
+    .skills-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
 
-        footer a {
-            color: var(--primary-color);
-            text-decoration: none;
-        }
+    .skill-card {
+      position: relative;
+      background: var(--background-color);
+      border: 1px solid var(--primary-color);
+      padding: 1rem;
+      border-radius: 8px;
+      transition: background 0.3s, border-color 0.3s;
+      cursor: pointer;
+    }
 
-        @media (max-width: 768px) {
-            header {
-                padding: 3rem 1rem;
-            }
+    .skill-card:hover {
+      border-color: var(--accent-color);
+      background: rgba(76, 161, 175, 0.1);
+    }
 
-            header h1 {
-                font-size: 2rem;
-            }
+    .skill-card h3 {
+      margin-top: 0;
+      color: var(--secondary-color);
+      font-size: 1.1rem;
+    }
 
-            header p {
-                font-size: 1rem;
-            }
+    .skill-progress {
+      margin-top: 0.5rem;
+      background: #ddd;
+      border-radius: 5px;
+      overflow: hidden;
+      position: relative;
+      height: 8px;
+    }
 
-            .social-icons a {
-                font-size: 1.3rem;
-            }
+    .skill-bar {
+      width: 0;
+      height: 8px;
+      background: var(--accent-color);
+      transition: width 1s ease-in-out;
+    }
 
-            .cta-buttons a {
-                padding: 0.6rem 1rem;
-                font-size: 0.9rem;
-            }
+    /* =========================================
+       9. TIMELINE (EXPERIENCE / EDUCATION)
+    ========================================= */
+    .timeline {
+      position: relative;
+      margin: 2rem 0;
+      padding: 0;
+      list-style: none;
+    }
 
-            section h2 {
-                font-size: 1.8rem;
-            }
+    .timeline li {
+      position: relative;
+      padding-left: 20px;
+      margin-bottom: 2rem;
+      opacity: 0; /* Fade-in effect */
+      transform: translateY(20px);
+      transition: opacity 0.6s, transform 0.6s;
+    }
 
-            .timeline li::before {
-                font-size: 1rem;
-            }
+    .timeline li.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
-            .timeline h3 {
-                font-size: 1rem;
-            }
-        }
-    </style>
+    .timeline li::before {
+      content: '\25CF';
+      position: absolute;
+      left: 0;
+      top: 0.4rem;
+      color: var(--primary-color);
+      font-size: 1.2rem;
+    }
+
+    .timeline h3 {
+      margin: 0;
+      font-size: 1.1rem;
+      color: var(--secondary-color);
+    }
+
+    .timeline p {
+      margin-top: 0.3rem;
+    }
+
+    /* YEAR SELECTOR */
+    .year-selector {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+
+    .year-selector button {
+      background: var(--primary-color);
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      margin: 0.25rem;
+      cursor: pointer;
+      transition: background 0.3s;
+      border-radius: 4px;
+    }
+
+    .year-selector button:hover,
+    .year-selector button.active {
+      background: var(--secondary-color);
+    }
+
+    /* =========================================
+       10. BACK TO TOP BUTTON
+    ========================================= */
+    #back-to-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: var(--accent-color);
+      color: var(--secondary-color);
+      border: none;
+      border-radius: 50%;
+      width: 45px;
+      height: 45px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s, visibility 0.3s;
+      z-index: 9999;
+    }
+
+    #back-to-top.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    #back-to-top:hover {
+      background: var(--secondary-color);
+      color: var(--accent-color);
+    }
+
+    /* =========================================
+       11. FOOTER
+    ========================================= */
+    footer {
+      background: var(--secondary-color);
+      color: white;
+      text-align: center;
+      padding: 1.5rem 0;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: var(--primary-color);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+      color: var(--accent-color);
+    }
+
+    /* =========================================
+       12. MEDIA QUERIES
+    ========================================= */
+    @media (max-width: 768px) {
+      header {
+        padding: 3rem 1rem 3rem;
+      }
+
+      header h1 {
+        font-size: 2rem;
+      }
+
+      header p {
+        font-size: 1rem;
+      }
+
+      .social-icons a {
+        font-size: 1.3rem;
+      }
+
+      .cta-buttons a {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+      }
+
+      .nav-menu a {
+        font-size: 0.85rem;
+      }
+
+      .skill-card h3 {
+        font-size: 1rem;
+      }
+
+      .timeline h3 {
+        font-size: 1rem;
+      }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Sayani Banerjee</h1>
-        <p>Content Writer | Aspiring Marketing Strategist | MBA Student</p>
-        <div class="social-icons">
-            <a href="https://www.linkedin.com/in/sayani-b-2a43aa214/" target="_blank"><i class="fab fa-linkedin"></i></a>
-            <a href="https://github.com/" target="_blank"><i class="fab fa-github"></i></a>
-            <a href="https://twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a>
+  <!-- Scroll Progress Bar -->
+  <div id="scroll-progress"></div>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-container">
+      <div class="nav-logo">Sayani Banerjee</div>
+      <div class="nav-menu">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <button id="theme-toggle" aria-label="Toggle dark mode">
+          <i class="fas fa-moon"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header / Hero Section -->
+  <header>
+    <h1>Sayani Banerjee</h1>
+    <p>Content Writer | Aspiring Marketing Strategist | MBA Student</p>
+    <div class="social-icons">
+      <a
+        href="https://www.linkedin.com/in/sayani-b-2a43aa214/"
+        target="_blank"
+        ><i class="fab fa-linkedin"></i
+      ></a>
+      <a href="https://github.com/" target="_blank"
+        ><i class="fab fa-github"></i
+      ></a>
+      <a href="https://twitter.com/" target="_blank"
+        ><i class="fab fa-twitter"></i
+      ></a>
+    </div>
+    <div class="cta-buttons">
+      <a href="mailto:officialsayanibanerjee16@gmail.com">Hire Me</a>
+      <a href="/path/to/resume.pdf" download="Sayani_Banerjee_Resume.pdf"
+        >Download Resume</a
+      >
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <!-- About Section -->
+    <section id="about">
+      <h2>About Me</h2>
+      <div class="card">
+        <p>
+          I am a detail-oriented professional with over 2 years of experience in
+          content writing, management, and proofreading. Currently pursuing an
+          MBA in Marketing at EIILM, Kolkata, I aim to blend creativity with
+          strategic thinking to achieve impactful results.
+        </p>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+      <h2>Skills</h2>
+      <div class="skills-container">
+        <!-- Example skill: Adjust "data-level" to set skill bar percentage -->
+        <div
+          class="skill-card"
+          data-skill="Content Creation"
+          data-level="90"
+        >
+          <h3>Content Creation</h3>
+          <p>
+            Expert in crafting engaging content tailored for various audiences.
+          </p>
+          <div class="skill-progress">
+            <div class="skill-bar"></div>
+          </div>
         </div>
-        <div class="cta-buttons">
-            <a href="mailto:officialsayanibanerjee16@gmail.com">Hire Me</a>
-            <a href="/path/to/resume.pdf" download="Sayani_Banerjee_Resume.pdf">Download Resume</a>
+
+        <div
+          class="skill-card"
+          data-skill="Digital Marketing"
+          data-level="80"
+        >
+          <h3>Digital Marketing</h3>
+          <p>Skilled in SEO, campaign management, and social media strategies.</p>
+          <div class="skill-progress">
+            <div class="skill-bar"></div>
+          </div>
         </div>
-    </header>
-    <main>
-        <section id="about">
-            <h2>About Me</h2>
-            <div class="card">
-                <p>I am a detail-oriented professional with over 2 years of experience in content writing, management, and proofreading. Currently pursuing an MBA in Marketing at EIILM, Kolkata, I aim to blend creativity with strategic thinking to achieve impactful results.</p>
-            </div>
-        </section>
-        <section id="skills">
-            <h2>Skills</h2>
-            <div class="skills-container">
-                <div class="skill-card" data-skill="Content Creation">
-                    <h3>Content Creation</h3>
-                    <p>Expert in crafting engaging content tailored for various audiences.</p>
-                </div>
-                <div class="skill-card" data-skill="Digital Marketing">
-                    <h3>Digital Marketing</h3>
-                    <p>Skilled in SEO, campaign management, and social media strategies.</p>
-                </div>
-                <div class="skill-card" data-skill="Research & Analysis">
-                    <h3>Research & Analysis</h3>
-                    <p>Adept at conducting market research and delivering actionable insights.</p>
-                </div>
-                <div class="skill-card" data-skill="Marketing Strategy">
-                    <h3>Marketing Strategy</h3>
-                    <p>Proficient in planning and executing comprehensive marketing campaigns.</p>
-                </div>
-                <div class="skill-card" data-skill="Technical Proficiency">
-                    <h3>Technical Proficiency</h3>
-                    <p>LaTeX, Tableau, Power BI, Canva, and Adobe Suite.</p>
-                </div>
-            </div>
-        </section>
-        <section id="experience">
-            <h2>Professional Experience</h2>
-            <ul class="timeline">
-                <li data-year="2025">
-                    <h3>2025 - Present: Research Intern | IIT Kharagpur</h3>
-                    <p>Conducting in-depth research on content strategies for emerging technologies. Analyzing data trends to refine content marketing frameworks. Collaborating with academic and industry leaders to produce high-impact publications.</p>
-                </li>
-                <li data-year="2023">
-                    <h3>2023 - 2024: Content Writer | Outreach Chimp</h3>
-                    <p>Crafted compelling brand promotions for UK/US brands. Aligned content with brand identity to meet marketing objectives. Enhanced brand visibility by boosting engagement significantly.</p>
-                </li>
-                <li data-year="2021">
-                    <h3>2021 - 2022: Associate Language Editor | TNQ Technologies</h3>
-                    <p>Proofread and edited science and non-science manuscripts with high accuracy. Improved process efficiency by reducing turnaround time. Maintained adherence to house style for optimal quality.</p>
-                </li>
-                <li data-year="2021">
-                    <h3>2021: Content Writer Intern | Asiana Times</h3>
-                    <p>Authored diverse lifestyle, media, and socio-political content. Contributed critical analysis on controversial subjects, adding depth to discussions. Enhanced content strategy, increasing readership significantly.</p>
-                </li>
-            </ul>
-            <div class="year-selector">
-                <button data-year="2025">2025</button>
-                <button data-year="2023">2023</button>
-                <button data-year="2021">2021</button>
-            </div>
-        </section>
-        <section id="education">
-            <h2>Education</h2>
-            <ul class="timeline">
-                <li data-year="Ongoing">
-                    <h3>Ongoing: MBA in Marketing | EIILM, Kolkata</h3>
-                    <p>Focus on Digital Marketing, Consumer Behavior, and Strategic Brand Management.</p>
-                </li>
-                <li data-year="2021">
-                    <h3>2021: Bachelor of Arts English Honours | University of Calcutta</h3>
-                    <p>Developed strong analytical and communication skills through intensive coursework and projects.</p>
-                </li>
-                <li data-year="2018">
-                    <h3>2018: ISC (Humanities) | Hirendra Leela Patra Navis School, Kolkata</h3>
-                    <p>Gained foundational knowledge in communication and critical thinking.</p>
-                </li>
-                <li data-year="2016">
-                    <h3>2016: ICSE (Science) | Hirendra Leela Patra Navis School, Kolkata</h3>
-                    <p>Built a strong base in analytical and logical reasoning.</p>
-                </li>
-            </ul>
-            <div class="year-selector">
-                <button data-year="Ongoing">Ongoing</button>
-                <button data-year="2021">2021</button>
-                <button data-year="2018">2018</button>
-                <button data-year="2016">2016</button>
-            </div>
-        </section>
-    </main>
-    <footer>
-        <p>© 2024 Sayani Banerjee. All rights reserved. | <a href="mailto:officialsayanibanerjee16@gmail.com">Contact Me</a></p>
-    </footer>
-    <button id="theme-toggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const themeToggle = document.getElementById('theme-toggle');
-            themeToggle.addEventListener('click', () => {
-                document.body.dataset.theme = document.body.dataset.theme === 'dark' ? '' : 'dark';
-            });
+        <div
+          class="skill-card"
+          data-skill="Research & Analysis"
+          data-level="85"
+        >
+          <h3>Research & Analysis</h3>
+          <p>
+            Adept at conducting market research and delivering actionable
+            insights.
+          </p>
+          <div class="skill-progress">
+            <div class="skill-bar"></div>
+          </div>
+        </div>
 
-            function setupTimeline(section) {
-                const buttons = document.querySelectorAll(`#${section} .year-selector button`);
-                const items = document.querySelectorAll(`#${section} .timeline li`);
+        <div
+          class="skill-card"
+          data-skill="Marketing Strategy"
+          data-level="70"
+        >
+          <h3>Marketing Strategy</h3>
+          <p>
+            Proficient in planning and executing comprehensive marketing
+            campaigns.
+          </p>
+          <div class="skill-progress">
+            <div class="skill-bar"></div>
+          </div>
+        </div>
 
-                buttons.forEach(button => {
-                    button.addEventListener('click', function() {
-                        const year = this.getAttribute('data-year');
-                        buttons.forEach(btn => btn.classList.remove('active'));
-                        this.classList.add('active');
-                        items.forEach(item => {
-                            if (item.getAttribute('data-year') === year) {
-                                item.classList.add('active');
-                            } else {
-                                item.classList.remove('active');
-                            }
-                        });
-                    });
-                });
-                if (buttons.length > 0) {
-                    buttons[0].click();
-                }
-            }
+        <div
+          class="skill-card"
+          data-skill="Technical Proficiency"
+          data-level="75"
+        >
+          <h3>Technical Proficiency</h3>
+          <p>LaTeX, Tableau, Power BI, Canva, and Adobe Suite.</p>
+          <div class="skill-progress">
+            <div class="skill-bar"></div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-            setupTimeline('experience');
-            setupTimeline('education');
+    <!-- Experience Section -->
+    <section id="experience">
+      <h2>Professional Experience</h2>
+      <ul class="timeline">
+        <li data-year="2025">
+          <h3>2025 - Present: Research Intern | IIT Kharagpur</h3>
+          <p>
+            Conducting in-depth research on content strategies for emerging
+            technologies. Analyzing data trends to refine content marketing
+            frameworks. Collaborating with academic and industry leaders to
+            produce high-impact publications.
+          </p>
+        </li>
+        <li data-year="2023">
+          <h3>2023 - 2024: Content Writer | Outreach Chimp</h3>
+          <p>
+            Crafted compelling brand promotions for UK/US brands. Aligned
+            content with brand identity to meet marketing objectives. Enhanced
+            brand visibility by boosting engagement significantly.
+          </p>
+        </li>
+        <li data-year="2021">
+          <h3>2021 - 2022: Associate Language Editor | TNQ Technologies</h3>
+          <p>
+            Proofread and edited science and non-science manuscripts with high
+            accuracy. Improved process efficiency by reducing turnaround time.
+            Maintained adherence to house style for optimal quality.
+          </p>
+        </li>
+        <li data-year="2021">
+          <h3>2021: Content Writer Intern | Asiana Times</h3>
+          <p>
+            Authored diverse lifestyle, media, and socio-political content.
+            Contributed critical analysis on controversial subjects, adding
+            depth to discussions. Enhanced content strategy, increasing
+            readership significantly.
+          </p>
+        </li>
+      </ul>
+      <div class="year-selector">
+        <button data-year="2025">2025</button>
+        <button data-year="2023">2023</button>
+        <button data-year="2021">2021</button>
+      </div>
+    </section>
 
-            const skillCards = document.querySelectorAll('.skill-card');
-            skillCards.forEach(card => {
-                card.addEventListener('click', function() {
-                    alert('You clicked on: ' + this.getAttribute('data-skill'));
-                });
-            });
+    <!-- Education Section -->
+    <section id="education">
+      <h2>Education</h2>
+      <ul class="timeline">
+        <li data-year="Ongoing">
+          <h3>Ongoing: MBA in Marketing | EIILM, Kolkata</h3>
+          <p>
+            Focus on Digital Marketing, Consumer Behavior, and Strategic Brand
+            Management.
+          </p>
+        </li>
+        <li data-year="2021">
+          <h3>2021: Bachelor of Arts English Honours | University of Calcutta</h3>
+          <p>
+            Developed strong analytical and communication skills through
+            intensive coursework and projects.
+          </p>
+        </li>
+        <li data-year="2018">
+          <h3>2018: ISC (Humanities) | Hirendra Leela Patra Navis School, Kolkata</h3>
+          <p>Gained foundational knowledge in communication and critical thinking.</p>
+        </li>
+        <li data-year="2016">
+          <h3>2016: ICSE (Science) | Hirendra Leela Patra Navis School, Kolkata</h3>
+          <p>Built a strong base in analytical and logical reasoning.</p>
+        </li>
+      </ul>
+      <div class="year-selector">
+        <button data-year="Ongoing">Ongoing</button>
+        <button data-year="2021">2021</button>
+        <button data-year="2018">2018</button>
+        <button data-year="2016">2016</button>
+      </div>
+    </section>
+  </main>
 
-            // Additional interactivity: skill cards with a flip effect
-            const skillCardsFlip = document.querySelectorAll('.skill-card');
-            skillCardsFlip.forEach(card => {
-                let isFlipped = false;
-                card.addEventListener('click', function() {
-                    if (!isFlipped) {
-                        this.innerHTML = `<div style="backface-visibility: hidden; transform: rotateY(180deg);">${this.innerHTML}</div><div style="backface-visibility: hidden;">More detailed info about ${this.getAttribute('data-skill')}</div>`;
-                    } else {
-                        this.innerHTML = this.firstChild.innerHTML;
-                    }
-                    isFlipped = !isFlipped;
-                });
-            });
+  <!-- Back to Top Button -->
+  <button id="back-to-top" aria-label="Back to Top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <!-- Footer -->
+  <footer>
+    <p>
+      © 2024 Sayani Banerjee. All rights reserved. |
+      <a href="mailto:officialsayanibanerjee16@gmail.com">Contact Me</a>
+    </p>
+  </footer>
+
+  <script>
+    // ========================================
+    // 1. Theme Toggle
+    // ========================================
+    const themeToggle = document.getElementById('theme-toggle');
+    themeToggle.addEventListener('click', () => {
+      document.body.dataset.theme =
+        document.body.dataset.theme === 'dark' ? '' : 'dark';
+    });
+
+    // ========================================
+    // 2. Scroll Progress Bar
+    // ========================================
+    const scrollProgress = document.getElementById('scroll-progress');
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.body.scrollHeight - window.innerHeight;
+      const width = (scrollTop / docHeight) * 100;
+      scrollProgress.style.width = width + '%';
+    });
+
+    // ========================================
+    // 3. Back to Top Button
+    // ========================================
+    const backToTopBtn = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTopBtn.classList.add('show');
+      } else {
+        backToTopBtn.classList.remove('show');
+      }
+    });
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // ========================================
+    // 4. Timeline Filtering + Fade-in Animation
+    // ========================================
+    function setupTimeline(section) {
+      const buttons = document.querySelectorAll(`#${section} .year-selector button`);
+      const items = document.querySelectorAll(`#${section} .timeline li`);
+
+      // Fade-in on scroll with IntersectionObserver
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+          }
         });
-    </script>
+      }, { threshold: 0.1 });
+
+      items.forEach((item) => observer.observe(item));
+
+      // Filter items by year
+      buttons.forEach((button) => {
+        button.addEventListener('click', function () {
+          const year = this.getAttribute('data-year');
+          buttons.forEach((btn) => btn.classList.remove('active'));
+          this.classList.add('active');
+          items.forEach((item) => {
+            item.classList.remove('active'); // reset fade for a quick fade if refiltered
+            if (item.getAttribute('data-year') === year) {
+              // Re-trigger fade with a slight timeout
+              setTimeout(() => {
+                item.classList.add('active');
+              }, 100);
+              item.style.display = 'block';
+            } else {
+              item.style.display = 'none';
+            }
+          });
+        });
+      });
+
+      // Auto-click the first button
+      if (buttons.length > 0) {
+        buttons[0].click();
+      }
+    }
+
+    setupTimeline('experience');
+    setupTimeline('education');
+
+    // ========================================
+    // 5. Skill Cards with Progress Bars
+    // ========================================
+    const skillCards = document.querySelectorAll('.skill-card');
+    skillCards.forEach((card) => {
+      const skillBar = card.querySelector('.skill-bar');
+      const level = card.getAttribute('data-level') || 80;
+      // Animate skill bar on hover or click
+      card.addEventListener('mouseenter', () => {
+        skillBar.style.width = level + '%';
+      });
+      card.addEventListener('mouseleave', () => {
+        skillBar.style.width = '0%';
+      });
+
+      // Optional: show skill name on click
+      card.addEventListener('click', () => {
+        alert('You clicked on: ' + card.getAttribute('data-skill'));
+      });
+    });
+  </script>
 </body>
 </html>
