@@ -21,9 +21,9 @@
             background: linear-gradient(45deg, #4CA1AF, #2C3E50);
             color: white;
             text-align: center;
-            padding: 3rem 0;
+            padding: 5rem 2rem;
             position: relative;
-            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
         }
 
         header h1 {
@@ -33,7 +33,7 @@
 
         header p {
             font-size: 1.4rem;
-            margin: 0.5rem 0;
+            margin: 1rem 0;
         }
 
         .social-icons {
@@ -52,6 +52,25 @@
             transform: scale(1.2);
         }
 
+        .cta-buttons {
+            margin-top: 2rem;
+        }
+
+        .cta-buttons a {
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            background: #4CA1AF;
+            color: white;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: background 0.3s;
+            margin: 0 0.5rem;
+        }
+
+        .cta-buttons a:hover {
+            background: #2C3E50;
+        }
+
         /* Main Layout */
         main {
             max-width: 1200px;
@@ -64,7 +83,7 @@
         }
 
         section h2 {
-            font-size: 2rem;
+            font-size: 2.5rem;
             color: #2C3E50;
             position: relative;
             margin-bottom: 1rem;
@@ -73,7 +92,7 @@
         section h2::after {
             content: '';
             display: block;
-            width: 60px;
+            width: 80px;
             height: 3px;
             background: #4CA1AF;
             margin-top: 0.5rem;
@@ -119,6 +138,34 @@
             margin-bottom: 0.5rem;
         }
 
+        /* Experience Section */
+        .timeline {
+            position: relative;
+            margin: 2rem 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .timeline li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 2rem;
+        }
+
+        .timeline li::before {
+            content: '\25CF';
+            position: absolute;
+            left: 0;
+            top: 0.5rem;
+            color: #4CA1AF;
+            font-size: 1.2rem;
+        }
+
+        .timeline h3 {
+            margin: 0;
+            font-size: 1.2rem;
+        }
+
         /* Footer */
         footer {
             background: #2C3E50;
@@ -142,6 +189,10 @@
             <a href="https://www.linkedin.com/in/sayani-b-2a43aa214/" target="_blank"><i class="fab fa-linkedin"></i></a>
             <a href="https://github.com/" target="_blank"><i class="fab fa-github"></i></a>
             <a href="https://twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a>
+        </div>
+        <div class="cta-buttons">
+            <a href="#contact">Contact Me</a>
+            <a href="#portfolio">View Portfolio</a>
         </div>
     </header>
     <main>
@@ -178,18 +229,20 @@
         </section>
         <section id="experience">
             <h2>Professional Experience</h2>
-            <div class="card">
-                <h3>Research Intern | IIT Kharagpur</h3>
-                <p>Conducting in-depth research on content strategies for emerging technologies.</p>
-            </div>
-            <div class="card">
-                <h3>Content Writer | Outreach Chimp</h3>
-                <p>Managed branding campaigns and created engaging promotional content for UK/US audiences.</p>
-            </div>
-            <div class="card">
-                <h3>Language Editor | TNQ Technologies</h3>
-                <p>Proofread academic manuscripts, maintaining high accuracy and quality standards.</p>
-            </div>
+            <ul class="timeline">
+                <li>
+                    <h3>Research Intern | IIT Kharagpur</h3>
+                    <p>Conducting in-depth research on content strategies for emerging technologies.</p>
+                </li>
+                <li>
+                    <h3>Content Writer | Outreach Chimp</h3>
+                    <p>Managed branding campaigns and created engaging promotional content for UK/US audiences.</p>
+                </li>
+                <li>
+                    <h3>Language Editor | TNQ Technologies</h3>
+                    <p>Proofread academic manuscripts, maintaining high accuracy and quality standards.</p>
+                </li>
+            </ul>
         </section>
         <section id="education">
             <h2>Education</h2>
