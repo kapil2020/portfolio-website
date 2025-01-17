@@ -4,147 +4,306 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sayani Banerjee - Portfolio</title>
-    <link rel="icon" href="favicon.ico">
-    <link rel="stylesheet" type="text/css" href="https://github.com/kapil2020/portfolio-website/blob/main/style.css">
     <!-- Font Awesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* General Styling */
+        :root {
+            --primary-color: #4CA1AF;
+            --secondary-color: #2C3E50;
+            --background-color: #f9f9f9;
+            --text-color: #333;
+        }
+
+        [data-theme="dark"] {
+            --primary-color: #2C3E50;
+            --secondary-color: #4CA1AF;
+            --background-color: #121212;
+            --text-color: #f1f1f1;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            text-align: center;
+            padding: 5rem 2rem;
+            position: relative;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            margin: 0;
+        }
+
+        header p {
+            font-size: 1.4rem;
+            margin: 1rem 0;
+        }
+
+        .social-icons {
+            margin-top: 1.5rem;
+        }
+
+        .social-icons a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 2rem;
+            transition: transform 0.3s;
+        }
+
+        .social-icons a:hover {
+            transform: scale(1.2);
+        }
+
+        .cta-buttons {
+            margin-top: 2rem;
+        }
+
+        .cta-buttons a {
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: background 0.3s;
+            margin: 0 0.5rem;
+        }
+
+        .cta-buttons a:hover {
+            background: var(--secondary-color);
+        }
+
+        #theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 0.5rem 1rem;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        #theme-toggle:hover {
+            background: var(--secondary-color);
+        }
+
+        #resume-download {
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: background 0.3s;
+        }
+
+        #resume-download:hover {
+            background: var(--secondary-color);
+        }
+
+        /* Main Layout */
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            margin-bottom: 3rem;
+        }
+
+        section h2 {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            position: relative;
+            margin-bottom: 1rem;
+        }
+
+        section h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: var(--primary-color);
+            margin-top: 0.5rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        [data-theme="dark"] .card {
+            background: #1E1E1E;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            margin: 2rem 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .timeline li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 2rem;
+        }
+
+        .timeline li::before {
+            content: '\25CF';
+            position: absolute;
+            left: 0;
+            top: 0.5rem;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+
+        .timeline h3 {
+            margin: 0;
+            font-size: 1.2rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary-color);
+            color: white;
+            text-align: center;
+            padding: 1.5rem 0;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
-    <!-- Theme Toggle Button -->
-    <button id="theme-toggle">Toggle Dark Mode</button>
-
-    <!-- Header Section -->
     <header>
-        <div class="header-content">
-            <img src="profile.jpg" alt="Sayani Banerjee" class="profile-pic">
-            <h1>Sayani Banerjee</h1>
-            <p>Content Writer | Aspiring Marketing Strategist | MBA Student</p>
-            <div class="social-icons">
-                <a href="https://www.linkedin.com/in/sayani-b-2a43aa214/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                <a href="https://github.com/sayani-banerjee" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="https://twitter.com/sayani_bee" target="_blank"><i class="fab fa-twitter"></i></a>
-            </div>
-            <div class="cta-buttons">
-                <a href="mailto:officialsayanibanerjee16@gmail.com">Hire Me</a>
-                <a id="resume-download" href="Sayani_Banerjee_Resume.pdf" download>Download Resume</a>
-            </div>
+        <h1>Sayani Banerjee</h1>
+        <p>Content Writer | Aspiring Marketing Strategist | MBA Student</p>
+        <div class="social-icons">
+            <a href="https://www.linkedin.com/in/sayani-b-2a43aa214/" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a>
+        </div>
+        <div class="cta-buttons">
+            <a href="mailto:officialsayanibanerjee16@gmail.com">Hire Me</a>
+            <a id="resume-download" href="/path/to/resume.pdf" download="Sayani_Banerjee_Resume.pdf">Download Resume</a>
         </div>
     </header>
-
-    <!-- Main Content -->
     <main>
-        <!-- About Section -->
         <section id="about">
             <h2>About Me</h2>
             <div class="card">
                 <p>I am a detail-oriented professional with over 2 years of experience in content writing, management, and proofreading. Currently pursuing an MBA in Marketing at EIILM, Kolkata, I aim to blend creativity with strategic thinking to achieve impactful results.</p>
             </div>
         </section>
-
-        <!-- Skills Section -->
         <section id="skills">
             <h2>Skills</h2>
             <div class="skills-container">
                 <div class="skill-card">
-                    <i class="fas fa-pen-alt"></i>
                     <h3>Content Creation</h3>
-                    <div class="skill-bar" style="width: 90%;"></div>
+                    <p>Expert in crafting engaging content tailored for various audiences.</p>
                 </div>
                 <div class="skill-card">
-                    <i class="fas fa-bullhorn"></i>
                     <h3>Digital Marketing</h3>
-                    <div class="skill-bar" style="width: 80%;"></div>
+                    <p>Skilled in SEO, campaign management, and social media strategies.</p>
                 </div>
                 <div class="skill-card">
-                    <i class="fas fa-chart-line"></i>
                     <h3>Research & Analysis</h3>
-                    <div class="skill-bar" style="width: 85%;"></div>
+                    <p>Adept at conducting market research and delivering actionable insights.</p>
                 </div>
                 <div class="skill-card">
-                    <i class="fas fa-tasks"></i>
                     <h3>Marketing Strategy</h3>
-                    <div class="skill-bar" style="width: 80%;"></div>
+                    <p>Proficient in planning and executing comprehensive marketing campaigns.</p>
                 </div>
                 <div class="skill-card">
-                    <i class="fas fa-laptop"></i>
                     <h3>Technical Proficiency</h3>
-                    <div class="skill-bar" style="width: 75%;"></div>
+                    <p>LaTeX, Tableau, Power BI, Canva, and Adobe Suite.</p>
                 </div>
             </div>
         </section>
-
-        <!-- Experience Section -->
         <section id="experience">
             <h2>Professional Experience</h2>
             <ul class="timeline">
                 <li>
-                    <i class="fas fa-briefcase"></i>
                     <h3>2025 - Present: Research Intern | IIT Kharagpur</h3>
                     <p>Conducting in-depth research on content strategies for emerging technologies. Analyzing data trends to refine content marketing frameworks. Collaborating with academic and industry leaders to produce high-impact publications.</p>
                 </li>
                 <li>
-                    <i class="fas fa-briefcase"></i>
                     <h3>2023 - 2024: Content Writer | Outreach Chimp</h3>
                     <p>Crafted compelling brand promotions for UK/US brands. Aligned content with brand identity to meet marketing objectives. Enhanced brand visibility by boosting engagement significantly.</p>
                 </li>
                 <li>
-                    <i class="fas fa-briefcase"></i>
                     <h3>2021 - 2022: Associate Language Editor | TNQ Technologies</h3>
                     <p>Proofread and edited science and non-science manuscripts with high accuracy. Improved process efficiency by reducing turnaround time. Maintained adherence to house style for optimal quality.</p>
                 </li>
                 <li>
-                    <i class="fas fa-briefcase"></i>
                     <h3>2021: Content Writer Intern | Asiana Times</h3>
                     <p>Authored diverse lifestyle, media, and socio-political content. Contributed critical analysis on controversial subjects, adding depth to discussions. Enhanced content strategy, increasing readership significantly.</p>
                 </li>
             </ul>
         </section>
-
-        <!-- Education Section -->
         <section id="education">
             <h2>Education</h2>
             <ul class="timeline">
                 <li>
-                    <i class="fas fa-graduation-cap"></i>
                     <h3>Ongoing: MBA in Marketing | EIILM, Kolkata</h3>
                     <p>Focus on Digital Marketing, Consumer Behavior, and Strategic Brand Management.</p>
                 </li>
                 <li>
-                    <i class="fas fa-graduation-cap"></i>
                     <h3>2021: Bachelor of Arts English Honours | University of Calcutta</h3>
                     <p>Developed strong analytical and communication skills through intensive coursework and projects.</p>
                 </li>
                 <li>
-                    <i class="fas fa-graduation-cap"></i>
                     <h3>2018: ISC (Humanities) | Hirendra Leela Patra Navis School, Kolkata</h3>
                     <p>Gained foundational knowledge in communication and critical thinking.</p>
                 </li>
                 <li>
-                    <i class="fas fa-graduation-cap"></i>
                     <h3>2016: ICSE (Science) | Hirendra Leela Patra Navis School, Kolkata</h3>
                     <p>Built a strong base in analytical and logical reasoning.</p>
                 </li>
             </ul>
         </section>
     </main>
-
-    <!-- Footer -->
     <footer>
         <p>© 2024 Sayani Banerjee. All rights reserved. | <a href="mailto:officialsayanibanerjee16@gmail.com">Contact Me</a></p>
     </footer>
+    <button id="theme-toggle">Toggle Dark Mode</button>
 
     <script>
         const themeToggle = document.getElementById('theme-toggle');
-        const body = document.body;
-
-        // Check for existing theme preference
-        if (localStorage.getItem('theme') === 'dark') {
-            body.dataset.theme = 'dark';
-        }
-
         themeToggle.addEventListener('click', () => {
-            body.dataset.theme = body.dataset.theme === 'dark' ? '' : 'dark';
-            localStorage.setItem('theme', body.dataset.theme);
+            document.body.dataset.theme = document.body.dataset.theme === 'dark' ? '' : 'dark';
         });
     </script>
 </body>
